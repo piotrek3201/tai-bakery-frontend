@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 function App() {
   return (
     <div>
-      <p>Piekarnia Pieczonka</p>
+      <p>Piekarnia!</p>
       <Switch>
         <Route path='/hello'>
           <p>Hello world</p>
