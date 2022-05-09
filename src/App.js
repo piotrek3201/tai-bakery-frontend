@@ -1,18 +1,23 @@
 import { Route, Switch } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import AboutPage from './pages/AboutPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
-    <div>
-      <p>Piekarnia!</p>
+    <Layout>
       <Switch>
         <Route path='/hello'>
           <p>Hello world</p>
         </Route>
         <Route path='/about'>
-          <p>About us</p>
+          <AboutPage />
+        </Route>
+        <Route path='/*'>
+          <NotFoundPage />
         </Route>
       </Switch>
-    </div>
+    </Layout>
   );
 }
 

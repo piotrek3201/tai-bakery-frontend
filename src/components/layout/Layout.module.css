@@ -1,0 +1,17 @@
+.layout {
+
+  
+  background-image: url('../../assets/wat.png');
+  background-size: 1920px 1080px;
+  background-repeat: no-repeat;
+}
+
+.main {
+  margin: 3rem auto;
+  width: 90%;
+  
+  background-color: #eeeeee;
+  height: 100%;
+  min-height: 40rem;
+  opacity: 0.5;
+}
