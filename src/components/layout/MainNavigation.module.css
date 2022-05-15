@@ -1,38 +1,52 @@
-.header {
-  width: 100%;
-  height: 5rem;
-  display: flex;
- 
-  justify-content: space-around;
-  align-items: center;
-  background-color: #770000;
+body{
+	font-family: Lato, sans-serif;
+	margin: 0;
+	background-color: #dadada;
 }
 
-.logo {
-  font-size: 2rem;
-  color: red;
-  align-content: left;
+.nav{
+	width: 100%;
+	background-color: rgb(206, 177, 177);
+	font-weight: bold;
 }
 
-.nav ul {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
+.nav ul{
+	list-style: none;
+	margin: 0;
+	display: flex; /* horizontal*/
+	justify-content: center; /*CENTER NAVBAR*/
+	align-items: center; /*center*/
+	padding: 15px 0 15px 0;
 }
 
-.nav li {
-  margin-left: 1.5rem;
-  font-size: 1.25rem;
+.nav li a{
+	text-decoration: none;
+	color: white;
+	position: relative;
+	transition: all ease-in-out 250ms;
+	text-align: center;
+	font-size: larger;
 }
 
-.nav a {
-  text-decoration: none;
-  color: #88dfdf;
+.nav li a::after{
+	content: '';
+	position: absolute;
+	display: block;
+	height: 4px;
+	width: 0%;
+	background-color: rgb(143, 47, 95);
+	bottom: -14px;
+	transition: all ease-in-out 250ms;
 }
 
-.nav a:hover,
-.nav a:active,
-.nav a.active {
-  color: #e6fcfc;
+.nav li a:hover::after{
+	width: 100%;
+}
+
+.nav li a:hover{
+	color: rgb(143, 47, 95);
+}
+
+.nav li{
+	padding: 0 25px 0 25px;
 }
