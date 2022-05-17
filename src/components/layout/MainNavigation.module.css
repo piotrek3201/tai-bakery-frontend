@@ -1,4 +1,4 @@
-body{
+body {
 	font-family: Lato, sans-serif;
 	margin: 0;
 	background-color: #dadada;
@@ -6,47 +6,93 @@ body{
 
 .nav{
 	width: 100%;
-	background-color: rgb(206, 177, 177);
+	background-color: white;
 	font-weight: bold;
 }
 
-.nav ul{
+.logo{
+	padding-right: 20px;
+}
+
+.list{
 	list-style: none;
 	margin: 0;
 	display: flex; /* horizontal*/
 	justify-content: center; /*CENTER NAVBAR*/
 	align-items: center; /*center*/
-	padding: 15px 0 15px 0;
+	padding: 25px 0 25px 0;
 }
 
-.nav li a{
+.list_item a{
 	text-decoration: none;
-	color: white;
+	color: rgb(199, 144, 182);
 	position: relative;
 	transition: all ease-in-out 250ms;
 	text-align: center;
 	font-size: larger;
+	opacity: 1;
 }
 
-.nav li a::after{
+.list_item a::after{
 	content: '';
 	position: absolute;
 	display: block;
 	height: 4px;
 	width: 0%;
-	background-color: rgb(143, 47, 95);
 	bottom: -14px;
-	transition: all ease-in-out 250ms;
+	transition: color ease-in-out 300ms;
 }
 
-.nav li a:hover::after{
+.list_item:hover::after{
 	width: 100%;
 }
 
-.nav li a:hover{
-	color: rgb(143, 47, 95);
+.list_item a:hover{
+	color: rgb(139, 27, 83);
 }
 
-.nav li{
-	padding: 0 25px 0 25px;
+.list_item{
+	padding: 10px 25px 10px 25px;
+	border-radius: 5px;	
+}
+
+.list_item:hover{
+	background-color: rgba(250, 167, 239, 0.2);
+	
+}
+
+
+/* Dropdown menu */
+
+.list_item:hover .drop{
+	display: block;
+}
+
+.drop{
+    position: absolute;
+    top: 135px;
+    box-shadow: 0 0 10px gray;
+    background-color: white;
+    flex-direction: column-reverse;
+    opacity: 0.95;
+	display: none;
+	list-style: none;
+	text-align: center;
+	padding-inline-start: 0;
+	border-radius: 3px;
+	z-index: 1;
+}
+
+
+.drop li a{
+    color: rgb(167, 109, 145);
+	font-weight: bold;
+}
+
+.drop li{
+	padding: 15px 36px 15px 36px;
+}
+
+.drop li:hover{
+	background-color: rgba(250, 167, 239, 0.2);
 }
