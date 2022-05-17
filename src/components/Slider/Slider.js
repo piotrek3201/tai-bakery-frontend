@@ -14,6 +14,8 @@ const Slider = () => {
         else {
             setSlideIndex(1);
         }
+
+        clearTimeout(time);
     }
 
     const prevSlide = () => {
@@ -28,6 +30,8 @@ const Slider = () => {
     const moveDot = index => {
         setSlideIndex(index);
     }
+
+    const time = setTimeout(nextSlide, 6000);
 
     return <Fragment>
         <div className={classes.container_slider}>
