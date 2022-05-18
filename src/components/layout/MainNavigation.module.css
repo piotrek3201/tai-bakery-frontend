@@ -1,13 +1,9 @@
-body {
-	font-family: Lato, sans-serif;
-	margin: 0;
-	background-color: #dadada;
-}
-
 .nav{
 	width: 100%;
 	background-color: white;
 	font-weight: bold;
+	font-family: Lato, sans-serif;
+	box-shadow: 0 0 7px 0 rgb(197, 197, 197);
 }
 
 .logo{
@@ -58,7 +54,10 @@ body {
 
 .list_item:hover{
 	background-color: rgba(250, 167, 239, 0.2);
-	
+}
+
+.list_item:hover a{
+	color: rgb(139, 27, 83);
 }
 
 
@@ -95,4 +94,12 @@ body {
 
 .drop li:hover{
 	background-color: rgba(250, 167, 239, 0.2);
+}
+
+.list_item .drop li a{
+	color: rgb(167, 109, 145);
+}
+
+.list_item .drop li:hover a{
+	color: rgb(139, 27, 83);
 }

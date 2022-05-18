@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { Fragment } from "react";
 import logo from './logo/logo.png';
+import cart from './logo/shopping-cart.png';
 import classes from './MainNavigation.module.css';
+import CategoriesList from "./CategoriesList";
 
 function MainNavigation() {
   return (
@@ -13,17 +15,12 @@ function MainNavigation() {
             <li className={classes.list_item}><Link to='/about'>O nas</Link></li>
             <li className={classes.list_item}>
               <Link to='/products'>Nasze produkty</Link>
-              <ul className={classes.drop}>
-                <li><Link to='/cakes'>Ciasta</Link></li>
-                <li><Link to='/layer-cakes'>Torty</Link></li>
-                <li><Link to='/cookies'>Ciastka</Link></li>
-                <li><Link to='/pralines'>Praliny</Link></li>
-                <li><Link to='/ice-cream'>Lody</Link></li>
-              </ul>
+              <CategoriesList />
             </li>
             <li className={classes.list_item}><Link to='/create'>Stwórz własny tort</Link></li>
             <li className={classes.list_item}><Link to='/contact'>Kontakt</Link></li>
             <li className={classes.list_item}><Link to='/cart'>Koszyk</Link></li>
+            <img src={cart}/>
           </ul>
         </div>
     </header>

@@ -2,6 +2,7 @@ import { useState, Fragment } from "react";
 import { SliderData } from "./SliderData";
 import classes from './Slider.module.css';
 import BtnSlider from "./BtnSlider";
+import { v4 as uuidv4 } from "uuid";
 
 const Slider = () => {
 
@@ -37,7 +38,7 @@ const Slider = () => {
         <div className={classes.container_slider}>
             {SliderData.map((obj, index) => {
                 return (
-                    <div className={slideIndex === index + 1 ? classes.active_anim : classes.slide}>
+                    <div key={obj.id} className={slideIndex === index + 1 ? classes.active_anim : classes.slide}>
                         <img src={obj.image} />
                     </div>
                 )
@@ -46,7 +47,7 @@ const Slider = () => {
             <BtnSlider moveSlide={prevSlide} direction={"prev"}/>
             <div className={classes.container_dots}>
                 {Array.from({length: SliderData.length}).map((item, index) => (
-                    <div onClick={() => moveDot(index + 1)} className={slideIndex === index + 1 ? classes.dot_active : classes.dot}></div>
+                    <div key={uuidv4()} onClick={() => moveDot(index + 1)} className={slideIndex === index + 1 ? classes.dot_active : classes.dot}></div>
                 ))}
             </div>
         </div>

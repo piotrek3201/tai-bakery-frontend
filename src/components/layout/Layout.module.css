@@ -1,11 +1,16 @@
 .layout {
   background-color: rgb(228, 227, 227);
+  background-image: url("https://fullerlife.com/wp-content/uploads/2021/04/soft-pink-abstract-watercolor-background_3590-176.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 .main {
   margin: 3rem auto;
   width: 90%;
-  background-color: rgb(228, 227, 227);
-  height: 100%;
-  min-height: 600px;
+  /* background-color: rgb(228, 227, 227); */
+  /* height: 100%; */
 }

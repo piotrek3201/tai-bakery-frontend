@@ -1,5 +1,98 @@
-.card {
-  padding: 1px;
-  border-radius: 15px;
-  background-color: white;
+*::before, *::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.card{
+  box-shadow: 0 0 5px 3px gray;
+  background-color: rgba(255, 255, 255, 0.75);;
+  border-radius: 2px;
+  min-width: 28rem;
+  margin: 0 auto 30px auto;
+}
+
+.card_img{
+  height: 350px;
+  width: 450px;
+  box-shadow: 0 0 5px 1px gray;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card_body{
+  margin: 0.5rem;
+  flex-grow: 1;
+}
+
+.title{
+  font-family: Lato, sans-serif;
+  text-align: center;
+}
+
+.description{
+  font-family: Lato, sans-serif;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.price{
+  font-family: Lato, sans-serif;
+  font-size: 1.4rem;
+  margin-top: 0.6rem;
+  text-align: center;
+}
+
+.input{
+  font-family: Lato, sans-serif;
+  margin: 1rem 0 1rem 0;
+  float: right;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background-color: transparent;
+  text-align: center;
+  padding: 0.8rem;
+  font-size: 1rem;
+  color: rgb(167, 109, 145);
+	font-weight: bold;
+}
+
+.btn{
+  font-family: Lato, sans-serif;
+  border: none;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background-color: transparent;
+  font-weight: bold;
+  color: inherit;
+  width: 80%;
+  margin: 1rem 0 1rem 0;
+  padding: 0.8rem;
+  cursor: pointer;
+  float: left;
+  font-size: 1rem;
+  color: rgb(167, 109, 145);
+	font-weight: bold;
+}
+
+.btn:hover{
+  color: rgb(139, 27, 83);
+  
+  background-color: rgba(250, 167, 239, 0.2);
+}
+
+.grid{
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  justify-content: center;
+}
+
+.product_title{
+  color: black;
+  font-family: Lato, sans-serif;
+  text-align: center;
+  font-size: 2.5rem;
 }
