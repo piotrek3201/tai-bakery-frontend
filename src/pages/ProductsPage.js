@@ -38,7 +38,7 @@ const ProductsPage = props => {
             }
             else 
                 setName("Brak produktów");
-            console.log(responseData);
+            // console.log(responseData);
             setProducts(responseData);
         }
 
