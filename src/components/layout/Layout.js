@@ -6,7 +6,7 @@ import classes from './Layout.module.css';
 function Layout(props) {
   return (
     <div className={classes.layout}>
-      <MainNavigation />
+      <MainNavigation categories={props.categories}/>
       <main className={classes.main}>
         {props.children}
       </main>

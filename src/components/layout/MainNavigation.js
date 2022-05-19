@@ -5,7 +5,7 @@ import cart from './logo/shopping-cart.png';
 import classes from './MainNavigation.module.css';
 import CategoriesList from "./CategoriesList";
 
-function MainNavigation() {
+function MainNavigation(props) {
   return (
     <Fragment>
       <header>
@@ -15,12 +15,12 @@ function MainNavigation() {
             <li className={classes.list_item}><Link to='/about'>O nas</Link></li>
             <li className={classes.list_item}>
               <Link to='/products'>Nasze produkty</Link>
-              <CategoriesList />
+              <CategoriesList categories={props.categories}/>
             </li>
             <li className={classes.list_item}><Link to='/create'>Stwórz własny tort</Link></li>
             <li className={classes.list_item}><Link to='/contact'>Kontakt</Link></li>
             <li className={classes.list_item}><Link to='/cart'>Koszyk</Link></li>
-            <img src={cart}/>
+            <img className={classes.cart} src={cart}/>
           </ul>
         </div>
     </header>

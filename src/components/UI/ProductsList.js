@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
 import Card from "./card";
 import classes from './card.module.css';
 
@@ -33,15 +33,15 @@ const dummyData = [
     }
   ]
 
-const ProductsList = () => {
-    console.log(dummyData);
+const ProductsList = props => {
 
-    const productsList = dummyData.map((product) => (
-        <Card key={product.id} title={product.title} description={product.description} price={product.price} url={product.url}/>
+    const productsList = props.products.map((product) => (
+        <Card key={product.productId} title={product.name} description={product.description} price={product.price} url={product.imageUrl}/>
     ));
 
     return <Fragment>
-        <h1 className={classes.product_title}>Ciasta</h1>
+        <h1 className={classes.product_title}>{props.categoryName}</h1>
+        
         <div className={classes.grid}>
             {productsList}
         </div>

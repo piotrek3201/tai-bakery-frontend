@@ -19,6 +19,20 @@
 	padding: 25px 0 25px 0;
 }
 
+@media (max-width: 1040px){
+	.list{
+		display: grid;
+	}
+
+	.cart{
+		display: none;
+	}
+
+	.drop{
+		top: 290px !important;
+	}
+}
+
 .list_item a{
 	text-decoration: none;
 	color: rgb(199, 144, 182);

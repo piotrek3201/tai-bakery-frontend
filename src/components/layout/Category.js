@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 const Category = props => {
 
-    const categoryName = `/${props.name}`;
+    const link = `/products/${props.id}`;
 
     return <Fragment>
-        <li><Link to={categoryName}>{props.name}</Link></li>
+        <li><Link to={link}>{props.name}</Link></li>
     </Fragment>
 };
 
