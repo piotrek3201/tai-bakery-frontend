@@ -1,0 +1,17 @@
+.map{
+    box-shadow: 0 0 5px 1px gray;
+    border: 1px solid grey;
+    border-radius: 5px;
+    max-width: 70%;
+    margin: auto;
+}
+
+.title{
+    font-family: Lato, sans-serif;
+    text-align: center;
+}
+
+.description{
+    font-family: Lato, sans-serif;
+    text-align: center;
+}

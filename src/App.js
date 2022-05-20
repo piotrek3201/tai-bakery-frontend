@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import { useEffect, useState } from 'react';
 import Category from './components/layout/Category';
+import ContactPage from './pages/ContactPage';
 
 function App() {
 
@@ -32,6 +33,9 @@ function App() {
         </Route>
         <Route path='/products' exact>
           <ProductsPage categories={categories}/>
+        </Route>
+        <Route path='/contact'>
+          <ContactPage />
         </Route>
         <Route path='/about'>
           <AboutPage />
