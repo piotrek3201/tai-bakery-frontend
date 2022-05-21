@@ -5,8 +5,8 @@ import NotFoundPage from './pages/NotFoundPage';
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import { useEffect, useState } from 'react';
-import Category from './components/layout/Category';
 import ContactPage from './pages/ContactPage';
+import AdminPage from './pages/Admin/AdminPage';
 
 function App() {
 
@@ -45,6 +45,12 @@ function App() {
         </Route>
         <Route path='/products/:categoryId'>
           <ProductsPage categories={categories}/>
+        </Route>
+        <Route path='/admin'>
+          <AdminPage />
+        </Route>
+        <Route path='*'>
+          <NotFoundPage />
         </Route>
       </Switch>
     </Layout>

@@ -19,7 +19,7 @@ function MainNavigation(props) {
             </li>
             <li className={classes.list_item}><Link to='/create'>Stwórz własny tort</Link></li>
             <li className={classes.list_item}><Link to='/contact'>Kontakt</Link></li>
-            <li className={classes.list_item}><Link to='/cart'>Koszyk</Link></li>
+            <li className={classes.list_item}><Link to='/admin'>Koszyk</Link></li>
             <img className={classes.cart} src={cart}/>
           </ul>
         </div>
