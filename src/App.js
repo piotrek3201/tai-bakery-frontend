@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import ContactPage from './pages/ContactPage';
 import AdminPage from './pages/Admin/AdminPage';
 
+
 function App() {
 
   const [categories, setCategories] = useState([]);

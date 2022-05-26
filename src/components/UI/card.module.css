@@ -83,7 +83,6 @@
 
 .container .btn{
   font-family: Lato, sans-serif;
-  border: none;
   border: 1px solid lightgray;
   border-radius: 5px;
   background-color: transparent;
@@ -95,7 +94,6 @@
   float: left;
   font-size: 1rem;
   color: rgb(167, 109, 145);
-	font-weight: bold;
   margin:0 auto;
   
 }

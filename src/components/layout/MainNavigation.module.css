@@ -24,7 +24,7 @@
 		display: grid;
 	}
 
-	.cart{
+	.cart_logo{
 		display: none;
 	}
 
@@ -116,4 +116,139 @@
 
 .list_item .drop li:hover a{
 	color: rgb(139, 27, 83);
+}
+
+/* Shopping cart */
+
+.list_item:hover .cart{
+	display: block;
+}
+
+.cart{
+    min-width: 400px;
+    background-color: rgba(243, 243, 243, 0.996);
+    border-radius: 3px;
+    box-shadow: 0 0 5px 3px gray;
+    justify-items: center;
+
+	position: absolute;
+    top: 137px;
+    opacity: 0.95;
+	display: none;
+	z-index: 1;
+	margin-left: -150px;
+}
+
+.title{
+    text-align: center;
+}
+
+
+hr{
+	margin: 10px 20px 10px 20px;
+	border: 1px solid rgb(139, 27, 83);
+}
+
+.total{
+    text-align: center;
+	display: flex;
+  	justify-content: center;
+}
+
+.total h2{
+	margin: 0 auto;
+	font-size: 25px;
+}
+
+.total h3{
+	margin: 0 auto;
+	font-size: 25px;
+}
+
+.button{
+   	margin:0 auto 10px auto;
+	display:block;
+    padding: 15px 25px 15px 25px;
+	font-family: Lato, sans-serif;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	background-color: transparent;
+	color: inherit;
+	cursor: pointer;
+	font-size: 1rem;
+	color: rgb(167, 109, 145);
+	font-weight: bold;
+}
+
+.button:hover{
+	color: rgb(139, 27, 83);
+	
+	background-color: rgba(250, 167, 239, 0.2);
+}
+
+.cart_items_container{
+	width: 90%;
+	height: 30%;
+	margin: 0px 20px 0px 20px;
+	background-color: white;
+	margin-bottom: 10px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
+}
+
+
+.image_box{
+	display: inline-block;
+}
+
+.image_box img{
+	width: 150px;
+	height: 120px;
+	border-radius: 7px;
+}
+
+.about{
+	margin-left: 10px;
+	display: inline-block;
+}
+.about h1{
+	font-size: 30px;
+	color: #202020;
+	margin-top: 0px;
+}
+.about h3{
+	font-size: 18px;
+	color: #909090;
+}
+
+.about h2{
+	font-size: 22px;
+	color: #202020;
+	margin-bottom: 0px;
+}
+
+.price{
+	font-size: 24px;
+	color: #202020;
+	margin-top: 15px;
+}
+
+.btn{
+	display: inline-block;
+	float: right;
+	margin: 5px 5px
+}
+
+.remove_btn{
+	background: url('./logo/cancel.png');
+	height: 30px;
+	width: 30px;
+	border: none;
+	cursor: pointer;
+}
+
+.remove_btn:hover{
+	color: rgb(139, 27, 83);
+	
+	background-color: rgba(250, 167, 239, 0.2);
 }
