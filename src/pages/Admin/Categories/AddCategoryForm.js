@@ -1,7 +1,6 @@
-import { Fragment, useRef } from 'react';
-import { Prompt } from 'react-router-dom';
+import { useRef, Fragment } from "react";
 
-function CategoryForm(props) {
+function AddCategoryForm(props) {
   const categoryNameInput = useRef();
 
   function submitFormHandler(event) {
@@ -12,6 +11,8 @@ function CategoryForm(props) {
     props.onAddCategory({
       categoryName: enteredCategoryName
     });
+
+    
   }
 
   return (
@@ -27,4 +28,4 @@ function CategoryForm(props) {
   );
 }
 
-export default CategoryForm;
+export default AddCategoryForm;

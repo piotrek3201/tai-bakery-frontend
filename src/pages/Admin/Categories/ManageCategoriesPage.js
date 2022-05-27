@@ -1,68 +1,154 @@
-import { useEffect } from 'react'
-import { Switch, Link, useHistory } from 'react-router-dom';
-import { Route } from 'react-router-dom';
-import { useRouteMatch } from 'react-router-dom';
+import { useEffect, useState, useCallback } from 'react'
 
-import useHttp from '../../../hooks/use-http';
-
-import { deleteCategory, getAllCategories } from '../../../lib/api';
-import EditCategory from './EditCategory';
-import NewCategory from './NewCategory';
+import API_URL from '../../../utilities/Constants';
+import AddCategoryForm from './AddCategoryForm';
+import EditCategoryForm from './EditCategoryForm';
 
 function ManageCategoriesPage() {
-  const match = useRouteMatch();
-  const history = useHistory();
 
-  const {
-    sendRequest,
-    status,
-    data: loadedCategories,
-    error
-  } = useHttp(getAllCategories, true);
-
-  useEffect(() => {
-    sendRequest();
-  }, [sendRequest]);
+  const [loadedCategories, setLoadedCategories] = useState([]);
+  const [showingAddCategoryForm, setShowingAddCategoryForm] = useState(false);
+  const [showingUpdateCategoryForm, setShowingUpdateAddCategoryForm] = useState(null);
+  const [currentCategory, setCurrentCategory] = useState(null);
 
   let categoryList;
-  if (loadedCategories !== null)
-  {
+
+  const fetchCategoriesHandler = useCallback(async () => {
+    try {
+      const response = await fetch(`${API_URL}/categories/all`);
+    
+      if (!response.ok) {
+        throw new Error('Nie udało się pobrać kategorii.');
+      }
+
+      const responseData = await response.json();
+
+      setLoadedCategories(responseData);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchCategoriesHandler();
+  }, [loadedCategories]);
+
+  function onClickAddCategory() {
+    setShowingAddCategoryForm(true);
+  }
+
+  function onEditHandler(category) { 
+    setCurrentCategory(category);
+    setShowingUpdateAddCategoryForm(true);
+  }
+
+  function onDeleteHandler(id) {
+    if (!window.confirm("Czy na pewno chcesz usunąć tę kategorię? Tej operacji nie można cofnąć."))
+      return;
+    try {
+      deleteCategoryHandler(id);
+    } catch (error) {
+      console.log(error.message);
+    }
+    fetchCategoriesHandler();
+  }
+
+  function onAddCategory(category) {
+    console.log(category);
+    try {
+      addCategoryHandler(category);
+    } catch (error) {
+      console.log(error.message);
+    }
+    
+    setShowingAddCategoryForm(false);
+    fetchCategoriesHandler();
+  }
+
+  function onEditCategory(category) {
+    try {
+      editCategoryHandler(category);
+    } catch (error) {
+      console.log(error.message);
+    }
+    setShowingUpdateAddCategoryForm(false);
+    fetchCategoriesHandler();
+  }
+
+  async function addCategoryHandler(category) {
+    const response = await fetch(`${API_URL}/categories/add`, {
+      method: 'POST',
+      body: JSON.stringify(category),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (!response.ok) {
+      throw new Error('Nie udało się dodać kategorii.');
+    }
+  }
+
+  async function editCategoryHandler(category) {
+    const response = await fetch(`${API_URL}/categories/update`, {
+      method: 'PUT',
+      body: JSON.stringify(category),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (!response.ok) {
+      throw new Error('Nie udało się zaktualizować kategorii.');
+    }
+  }
+
+  async function deleteCategoryHandler(id) {
+    const response = await fetch(`${API_URL}/categories/delete/${id}`, {
+      method: 'DELETE'
+    });
+    if (!response.ok) {
+      throw new Error('Nie udało się usunąć kategorii.');
+    }
+  }
+
+  if (loadedCategories !== null) {
     categoryList = loadedCategories.map(category => (
-      <li key={category.categoryId}>
-        {category.categoryName} <Link to={`${match.path}/edit/${category.categoryId}`}>Edytuj</Link> 
-        <button onClick={() => onDeleteHandler(category.categoryId)}>Usuń</button>
-      </li>
+      <tr key={category.categoryId}>
+        <td>
+          {category.categoryId}
+        </td>
+        <td>
+        {category.categoryName} 
+        </td>
+        <td>
+          <button onClick={() => onEditHandler(category)}>Edytuj</button>
+        </td>
+        <td>
+          <button onClick={() => onDeleteHandler(category.categoryId)}>Usuń</button>
+        </td>
+      </tr>
     ));
-  }
 
-  function onDeleteHandler(categoryId) {
-    //WYWALA ALE DZIALA
-    deleteCategory(categoryId);
-    history.go(0);
+    categoryList = (
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Nazwa kategorii</th>
+          <th></th>
+          <th></th>
+        </tr>
+        {categoryList}
+      </table>
+    );
   }
-
-  if(status !== 'pending' && error){ //dalem tak zeby nie bylo warninga
-    return <p>{error}</p>;
-  }
-
 
   return (
     <div>
-      <Switch>
-        <Route path={`${match.path}`} exact>
-          <p>Kategorie produktów</p>
-          <ul>
-            {categoryList}
-          </ul>
-          <Link to={`${match.path}/add`}>Dodaj</Link>
-        </Route>
-        <Route path={`${match.path}/add`}>
-          <NewCategory />
-        </Route>
-        <Route path={`${match.path}/edit/:categoryId`}>
-          <EditCategory />
-        </Route>
-      </Switch>
+      <p>Kategorie produktów</p>
+        {!showingAddCategoryForm && !showingUpdateCategoryForm && (<button type='button' onClick={onClickAddCategory}>Dodaj</button>)}
+        
+        {!showingAddCategoryForm && !showingUpdateCategoryForm && categoryList}
+        {showingAddCategoryForm && <AddCategoryForm onAddCategory={onAddCategory}/>}
+        {showingUpdateCategoryForm && <EditCategoryForm onEditCategory={onEditCategory} category={currentCategory}/>}
     </div>
   );
 }
