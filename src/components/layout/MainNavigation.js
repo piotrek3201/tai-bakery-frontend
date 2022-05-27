@@ -13,7 +13,7 @@ function MainNavigation(props) {
         <div className={classes.nav}>
           <ul className={classes.list}>
             <Link to='/home'><img className={classes.logo} src={logo} alt='logo'/></Link>
-            <li className={classes.list_item}><Link to='/about'>O nas</Link></li>
+            <li className={classes.list_item}><Link to='/admin'>O nas</Link></li>
             <li className={classes.list_item}>
               <Link to='/products'>Nasze produkty</Link>
               <CategoriesList categories={props.categories}/>
@@ -21,7 +21,7 @@ function MainNavigation(props) {
             <li className={classes.list_item}><Link to='/create'>Stwórz własny tort</Link></li>
             <li className={classes.list_item}><Link to='/contact'>Kontakt</Link></li>
             <li className={classes.list_item}>
-              <Link to='/admin'>Koszyk</Link>
+              <Link to='/cart'>Koszyk</Link>
               <ShoppingCart />
             </li>
             <img className={classes.cart_logo} src={cart}/>
