@@ -11,8 +11,6 @@ function AddCategoryForm(props) {
     props.onAddCategory({
       categoryName: enteredCategoryName
     });
-
-    
   }
 
   return (
