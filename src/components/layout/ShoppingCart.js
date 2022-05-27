@@ -1,6 +1,7 @@
 import React, {Fragment, useContext} from 'react';
 import classes from './MainNavigation.module.css';
 import CartContext from '../store/cart-context';
+import { v4 as uuidv4 } from "uuid";
 
 const ShoppingCart = () => {
 
@@ -8,8 +9,16 @@ const ShoppingCart = () => {
 
     const totalAmount = cartCtx.totalAmount.toFixed(2);
 
-    const cartItemRemoveHandler = id => {
-        cartCtx.removeItem(id);
+    const cartItemRemoveWholeHandler = id => {
+        cartCtx.removeWholeItem(id);
+    }
+
+    const cartItemRemoveHandler = (id, isByWeight) => {
+        cartCtx.removeItem(id, isByWeight);
+    }
+
+    const cartItemAddHandler = item => {
+        cartCtx.addOneItem(item);
     }
 
     // <li>{item.name + " " + item.amount}</li>
@@ -19,31 +28,39 @@ const ShoppingCart = () => {
         const price = item.amount * item.price;
 
         if(item.isByWeight === false){
-            return <div className={classes.cart_items_container}>
+            return <div key={uuidv4()} className={classes.cart_items_container}>
                 <div className={classes.image_box}>
                     <img src={item.url}></img>
                 </div>
                 <div className={classes.about}>
                     <h1>{item.name}</h1>
-                    <h3>{item.amount + " szt"}</h3>
+                    <div className={classes.amount}>
+                        <h3>{item.amount + " szt"}</h3>
+                        <button className={classes.add} onClick={cartItemAddHandler.bind(null, item)}></button>
+                        <button className={classes.remove} onClick={cartItemRemoveHandler.bind(null, item.id, item.isByWeight)}></button>
+                    </div>
                     <h2>{price.toFixed(2) + " zł"}</h2>
                 </div>
                 <div className={classes.btn}>
-                    <button className={classes.remove_btn} onClick={cartItemRemoveHandler.bind(null, item.id)}></button>
+                    <button className={classes.remove_all} onClick={cartItemRemoveWholeHandler.bind(null, item.id)}></button>
                 </div>    
             </div>; 
         } else {
-            return <div className={classes.cart_items_container}>
+            return <div key={uuidv4()} className={classes.cart_items_container}>
             <div className={classes.image_box}>
                 <img src={item.url}></img>
             </div>
             <div className={classes.about}>
                 <h1>{item.name}</h1>
-                <h3>{item.amount + " kg"}</h3>
+                <div className={classes.amount}>
+                    <h3>{item.amount.toFixed(2) + " kg"}</h3>
+                    <button className={classes.add} onClick={cartItemAddHandler.bind(null, item)}></button>
+                        <button className={classes.remove} onClick={cartItemRemoveHandler.bind(null, item.id, item.isByWeight)}></button>
+                </div>
                 <h2>{price.toFixed(2) + " zł"}</h2>
             </div>
             <div className={classes.btn}>
-                <button className={classes.remove_btn} onClick={cartItemRemoveHandler.bind(null, item.id)}></button>
+                <button className={classes.remove_all} onClick={cartItemRemoveWholeHandler.bind(null, item.id)}></button>
             </div>    
         </div>; 
         }
