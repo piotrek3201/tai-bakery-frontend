@@ -12,7 +12,6 @@ function EditCategoryForm(props) {
       categoryId: props.category.categoryId,
       categoryName: enteredCategoryName
     });
-
   }
   
   return (

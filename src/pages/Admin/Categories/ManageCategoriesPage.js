@@ -31,7 +31,9 @@ function ManageCategoriesPage() {
 
   useEffect(() => {
     fetchCategoriesHandler();
-  }, [loadedCategories]);
+  }, [fetchCategoriesHandler]);
+
+  console.log(loadedCategories);
 
   function onClickAddCategory() {
     setShowingAddCategoryForm(true);
@@ -130,13 +132,17 @@ function ManageCategoriesPage() {
 
     categoryList = (
       <table>
-        <tr>
-          <th>ID</th>
-          <th>Nazwa kategorii</th>
-          <th></th>
-          <th></th>
-        </tr>
-        {categoryList}
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nazwa kategorii</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {categoryList}
+        </tbody>
       </table>
     );
   }
