@@ -1,7 +1,9 @@
 import React, {Fragment, useContext} from 'react';
 import classes from './MainNavigation.module.css';
 import CartContext from '../store/cart-context';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { v4 as uuidv4 } from "uuid";
+import { Link } from 'react-router-dom';
 
 const ShoppingCart = () => {
 
@@ -55,7 +57,7 @@ const ShoppingCart = () => {
                 <div className={classes.amount}>
                     <h3>{item.amount.toFixed(2) + " kg"}</h3>
                     <button className={classes.add} onClick={cartItemAddHandler.bind(null, item)}></button>
-                        <button className={classes.remove} onClick={cartItemRemoveHandler.bind(null, item.id, item.isByWeight)}></button>
+                    <button className={classes.remove} onClick={cartItemRemoveHandler.bind(null, item.id, item.isByWeight)}></button>
                 </div>
                 <h2>{price.toFixed(2) + " zł"}</h2>
             </div>
@@ -78,7 +80,9 @@ const ShoppingCart = () => {
             </div>
             <hr />
         </div>
-        <button className={classes.button}>Zamów</button>
+        <Link to="/cart">
+            <button className={classes.button}>Zamów</button>
+        </Link>
       </div>
     </Fragment>
 }

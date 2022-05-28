@@ -7,6 +7,7 @@ import ProductsPage from './pages/ProductsPage';
 import { useEffect, useState } from 'react';
 import ContactPage from './pages/ContactPage';
 import AdminPage from './pages/Admin/AdminPage';
+import CartPage from './pages/Cart/CartPage';
 
 
 function App() {
@@ -49,6 +50,9 @@ function App() {
         </Route>
         <Route path='/admin'>
           <AdminPage />
+        </Route>
+        <Route path='/cart'>
+          <CartPage />
         </Route>
         <Route path='*'>
           <NotFoundPage />

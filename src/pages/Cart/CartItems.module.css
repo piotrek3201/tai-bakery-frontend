@@ -1,0 +1,67 @@
+.remove{
+	background: url('../../components/layout/logo/remove.png');
+	height: 25px;
+	width: 25px;
+	border: none;
+	cursor: pointer;
+    margin: 0 10px;
+}
+
+.add{
+	background: url('../../components/layout/logo/add.png');
+	height: 25px;
+	width: 25px;
+	border: none;
+	cursor: pointer;
+	margin: 0 10px;
+}
+
+.add:hover{
+	color: rgb(139, 27, 83);
+	border-radius: 50%;
+	background-color: rgba(250, 167, 239, 0.2);
+}
+
+.remove:hover{
+	color: rgb(139, 27, 83);
+	border-radius: 50%;
+	background-color: rgba(250, 167, 239, 0.2);
+}
+
+.img_name{
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+}
+
+.img_name img{
+    max-width: 230px;
+    max-height: 200px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    box-shadow: 5px 8px 15px -3px rgba(109, 109, 109, 0.267);
+}
+
+.amount, .price{
+    font-size: 20px;
+}
+
+.sum{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.remove_all{
+	background: url('../../components/layout/logo/cancel.png');
+	height: 30px;
+	width: 30px;
+	border: none;
+	cursor: pointer;
+}
+
+.remove_all:hover{
+	color: rgb(139, 27, 83);
+	
+	background-color: rgba(250, 167, 239, 0.2);
+}
