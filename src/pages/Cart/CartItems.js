@@ -1,6 +1,7 @@
 import { Fragment, useContext } from "react";
 import CartContext from "../../components/store/cart-context";
 import classes from './CartItems.module.css';
+import { v4 as uuidv4 } from "uuid";
 
 const CartItems = () => {
 
@@ -24,7 +25,7 @@ const CartItems = () => {
         const sum = item.amount * item.price;
 
         if(item.isByWeight === false){
-            return <tr>
+            return <tr key={uuidv4()}>
                 <td className={classes.img_name}>
                     <img src={item.url}></img>
                     {item.name}
@@ -45,7 +46,7 @@ const CartItems = () => {
                 </td>
             </tr>
         } else {
-            return <tr>
+            return <tr key={uuidv4()}>
                 <td className={classes.img_name}>
                     <img src={item.url}></img>
                     {item.name}

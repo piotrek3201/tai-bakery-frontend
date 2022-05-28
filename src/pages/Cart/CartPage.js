@@ -12,7 +12,9 @@ const CartPage = () => {
         <div className={classes.container}>
             <div className={classes.item_box}>
                 <table className={classes.items}>
-                    <CartItems/>
+                    <tbody>
+                        <CartItems/>
+                    </tbody>
                 </table>
             </div>
             <div className={classes.total_box}>
