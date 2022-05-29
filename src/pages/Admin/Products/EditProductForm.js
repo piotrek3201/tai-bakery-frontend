@@ -1,5 +1,6 @@
 import { useRef, Fragment, useState, useCallback, useEffect } from "react";
 import API_URL from '../../../utilities/Constants';
+import classes from './ProductForm.module.css';
 
 function EditProductForm(props) {
   const [loadedCategories, setLoadedCategories] = useState([]);
@@ -69,7 +70,7 @@ function EditProductForm(props) {
   }
 
   return (
-    <Fragment>
+    <div className={classes.container}>
       <form onSubmit={submitFormHandler}>
         <div>
           <label htmlFor='productName'>Nazwa produktu</label>
@@ -77,7 +78,7 @@ function EditProductForm(props) {
         </div>
         <div>
           <label htmlFor='description'>Opis</label>
-          <input type='text' id='description' ref={descriptionInput} defaultValue={props.product.description} />
+          <textarea type='text' id='description' ref={descriptionInput} defaultValue={props.product.description} />
         </div>
         <div>
           <label htmlFor='category-select'>Kategoria</label>
@@ -102,10 +103,12 @@ function EditProductForm(props) {
           <label htmlFor='url'>URL zdjęcia</label>
           <input type='text' id='url' ref={urlInput} defaultValue={props.product.imageUrl} />
         </div>
-        <button type='submit'>Dodaj</button>
-        <button type='button' onClick={onCancelHandler}>Anuluj</button>
+        <div className={classes.btn_container}>
+          <button className={classes.button} type='submit'>Dodaj</button>
+          <button className={classes.button} type='button' onClick={onCancelHandler}>Anuluj</button>
+        </div>
       </form>
-    </Fragment>
+    </div>
   );
 }
 

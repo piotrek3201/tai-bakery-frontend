@@ -1,5 +1,6 @@
 import { useRef, Fragment, useState, useCallback, useEffect } from "react";
 import API_URL from '../../../utilities/Constants';
+import classes from './ProductForm.module.css';
 
 function AddProductForm(props) {
   const [loadedCategories, setLoadedCategories] = useState([]);
@@ -50,7 +51,12 @@ function AddProductForm(props) {
     const enteredIsByWeight = isByWeightInput.current.checked;
     const enteredIsCustomizable = isCustomizableInput.current.checked;
     const enteredPrice = priceInput.current.value;
-    const enteredUrl = urlInput.current.value;
+    let enteredUrl = urlInput.current.value;
+
+    if(enteredUrl === ""){
+      enteredUrl = "url";
+      console.log(enteredUrl);
+    }
 
     props.onAddProduct({
       name: enteredProductName,
@@ -68,15 +74,15 @@ function AddProductForm(props) {
   }
 
   return (
-    <Fragment>
+    <div className={classes.container}>
       <form onSubmit={submitFormHandler}>
-        <div>
+        <div >
           <label htmlFor='productName'>Nazwa produktu</label>
-          <input type='text' id='productName' ref={productNameInput} />
+          <input type='text' id='productName' ref={productNameInput} placeholder="Wpisz nazwę produktu..."/>
         </div>
         <div>
           <label htmlFor='description'>Opis</label>
-          <input type='text' id='description' ref={descriptionInput} />
+          <textarea type='text' id='description' ref={descriptionInput} placeholder="Wpisz opis..."/>
         </div>
         <div>
           <label htmlFor='category-select'>Kategoria</label>
@@ -95,16 +101,18 @@ function AddProductForm(props) {
         </div>
         <div>
           <label htmlFor='price'>Cena</label>
-          <input type='number' id='price' ref={priceInput} />
+          <input type='number' id='price' ref={priceInput} placeholder="..."/>
         </div>
         <div>
           <label htmlFor='url'>URL zdjęcia</label>
-          <input type='text' id='url' ref={urlInput} />
+          <input type='text' id='url' ref={urlInput} placeholder="Wpisz url..."/>
         </div>
-        <button type='submit'>Dodaj</button>
-        <button type='button' onClick={onCancelHandler}>Anuluj</button>
+        <div className={classes.btn_container}>
+          <button className={classes.button} type='submit'>Dodaj</button>
+          <button className={classes.button} type='button' onClick={onCancelHandler}>Anuluj</button>
+        </div>
       </form>
-    </Fragment>
+    </div>
   );
 }
 

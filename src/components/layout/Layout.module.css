@@ -14,3 +14,7 @@
   /* background-color: rgb(228, 227, 227); */
   /* height: 100%; */
 }
+
+::selection {
+  background: pink;
+}

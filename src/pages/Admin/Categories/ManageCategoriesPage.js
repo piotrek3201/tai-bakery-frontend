@@ -4,6 +4,7 @@ import API_URL from '../../../utilities/Constants';
 import AddCategoryForm from './AddCategoryForm';
 import EditCategoryForm from './EditCategoryForm';
 import Categories from './Categories';
+import classes from './ManageCategoriesPage.module.css';
 
 function ManageCategoriesPage() {
 
@@ -118,9 +119,10 @@ function ManageCategoriesPage() {
 
   return (
     <div>
-      <p>Kategorie produktów</p>
-        {!showingAddCategoryForm && !showingUpdateCategoryForm && (<button type='button' onClick={onClickAddCategory}>Dodaj</button>)}
-        
+      <div className={classes.container}>
+        <p>Kategorie produktów</p>
+        {!showingAddCategoryForm && !showingUpdateCategoryForm && (<button className={classes.button} type='button' onClick={onClickAddCategory}>Dodaj</button>)}
+      </div>
         {!showingAddCategoryForm && !showingUpdateCategoryForm && <Categories onEditHandler={onEditHandler} onDeleteHandler={onDeleteHandler} loadedCategories={loadedCategories}/>}
         {showingAddCategoryForm && <AddCategoryForm onAddCategory={onAddCategory}/>}
         {showingUpdateCategoryForm && <EditCategoryForm onEditCategory={onEditCategory} category={currentCategory}/>}

@@ -1,4 +1,5 @@
 import { useRef, Fragment } from "react";
+import classes from './CategoryForm.module.css';
 
 function EditCategoryForm(props) {
   const categoryNameInput = useRef();
@@ -15,15 +16,15 @@ function EditCategoryForm(props) {
   }
   
   return (
-    <Fragment>
+    <div className={classes.container}>
       <form onSubmit={submitFormHandler}>
-        <div>
+        <div className={classes.categoryName}>
           <label htmlFor='categoryName'>Nazwa kategorii</label>
           <input type='text' id='categoryName' ref={categoryNameInput} defaultValue={props.category.categoryName}/>
         </div>
-        <button type='submit'>Zapisz</button>
+        <button className={classes.button} type='submit'>Zapisz</button>
       </form>
-    </Fragment>
+    </div>
   );
 }
 

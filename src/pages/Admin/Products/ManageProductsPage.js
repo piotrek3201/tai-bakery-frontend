@@ -3,6 +3,8 @@ import { useEffect, useState, useCallback } from 'react'
 import API_URL from '../../../utilities/Constants';
 import AddProductForm from './AddProductForm';
 import EditProductForm from './EditProductForm';
+import Products from './Products';
+import classes from './ManageProductsPage.module.css';
 
 function ManageProductsPage() {
 
@@ -115,53 +117,13 @@ function ManageProductsPage() {
     setShowingUpdateProductForm(false);
   }
 
-  if (loadedProducts !== null) {
-    productList = loadedProducts.map(product => (
-      <tr key={product.productId}>
-        <td>{product.productId}</td>
-        <td>{product.name}</td>
-        <td>{product.description}</td>
-        <td>{product.category.categoryName}</td>
-        <td>{product.isByWeight ? "TAK" : "NIE"}</td>
-        <td>{product.isCustomizable ? "TAK" : "NIE"}</td>
-        <td>{product.price}</td>
-        <td><img src={product.imageUrl} alt={product.name} width='200' height='200' /></td>
-        <td>
-          <button onClick={() => onEditHandler(product)}>Edytuj</button>
-        </td>
-        <td>
-          <button onClick={() => onDeleteHandler(product.productId)}>Usuń</button>
-        </td>
-      </tr>
-    ));
-
-    productList = (
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nazwa produktu</th>
-            <th>Opis</th>
-            <th>Kategoria</th>
-            <th>Na wagę?</th>
-            <th>Dostosowywalny?</th>
-            <th>Cena</th>
-            <th>Zdjęcie</th>
-          </tr>
-        </thead>
-        <tbody>
-          {productList}
-        </tbody>
-      </table>
-    );
-  }
-
   return (
     <div>
-      <p>Kategorie produktów</p>
-        {!showingAddProductForm && !showingUpdateProductForm && (<button type='button' onClick={onClickAddProduct}>Dodaj</button>)}
-        
-        {!showingAddProductForm && !showingUpdateProductForm && productList}
+      <div className={classes.container}>
+        <p>Produkty</p>
+        {!showingAddProductForm && !showingUpdateProductForm && (<button className={classes.button} type='button' onClick={onClickAddProduct}>Dodaj</button>)}
+      </div>
+        {!showingAddProductForm && !showingUpdateProductForm && <Products onEditHandler={onEditHandler} onDeleteHandler={onDeleteHandler} loadedProducts={loadedProducts}/>}
         {showingAddProductForm && <AddProductForm onAddProduct={onAddProduct} onCancelHandler={onCancelHandler}/>}
         {showingUpdateProductForm && <EditProductForm onEditProduct={onEditProduct} onCancelHandler={onCancelHandler} product={currentProduct}/>}
     </div>
