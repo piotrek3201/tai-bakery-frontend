@@ -42,20 +42,20 @@ function ManageProductsPage() {
     setShowingUpdateProductForm(true);
   }
 
-  function onDeleteHandler(id) {
+  async function onDeleteHandler(id) {
     if (!window.confirm("Czy na pewno chcesz usunąć ten produkt? Tej operacji nie można cofnąć."))
       return;
     try {
-      deleteProductHandler(id);
+      await deleteProductHandler(id);
     } catch (error) {
       console.log(error.message);
     }
     fetchProductsHandler();
   }
 
-  function onAddProduct(product) {
+  async function onAddProduct(product) {
     try {
-      addProductHandler(product);
+      await addProductHandler(product);
     } catch (error) {
       console.log(error.message);
     }
@@ -64,10 +64,10 @@ function ManageProductsPage() {
     fetchProductsHandler();
   }
 
-  function onEditProduct(product) {
+  async function onEditProduct(product) {
     console.log(product);
     try {
-      editProductHandler(product);
+      await editProductHandler(product);
     } catch (error) {
       console.log(error.message);
     }

@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from 'react'
 import API_URL from '../../../utilities/Constants';
 import AddCategoryForm from './AddCategoryForm';
 import EditCategoryForm from './EditCategoryForm';
+import Categories from './Categories';
 
 function ManageCategoriesPage() {
 
@@ -14,15 +15,16 @@ function ManageCategoriesPage() {
   let categoryList;
 
   const fetchCategoriesHandler = useCallback(async () => {
+    console.log("Zasysamy");
     try {
       const response = await fetch(`${API_URL}/categories/all`);
-    
+      
       if (!response.ok) {
         throw new Error('Nie udało się pobrać kategorii.');
       }
 
       const responseData = await response.json();
-
+      console.log(responseData);
       setLoadedCategories(responseData);
     } catch (error) {
       console.log(error.message);
@@ -33,7 +35,7 @@ function ManageCategoriesPage() {
     fetchCategoriesHandler();
   }, [fetchCategoriesHandler]);
 
-  console.log(loadedCategories);
+  // console.log(loadedCategories);
 
   function onClickAddCategory() {
     setShowingAddCategoryForm(true);
@@ -44,21 +46,21 @@ function ManageCategoriesPage() {
     setShowingUpdateAddCategoryForm(true);
   }
 
-  function onDeleteHandler(id) {
+  async function onDeleteHandler(id) {
     if (!window.confirm("Czy na pewno chcesz usunąć tę kategorię? Tej operacji nie można cofnąć."))
       return;
     try {
-      deleteCategoryHandler(id);
+      await deleteCategoryHandler(id);
     } catch (error) {
       console.log(error.message);
     }
     fetchCategoriesHandler();
   }
 
-  function onAddCategory(category) {
+  async function onAddCategory(category) {
     console.log(category);
     try {
-      addCategoryHandler(category);
+      await addCategoryHandler(category);
     } catch (error) {
       console.log(error.message);
     }
@@ -67,9 +69,9 @@ function ManageCategoriesPage() {
     fetchCategoriesHandler();
   }
 
-  function onEditCategory(category) {
+  async function onEditCategory(category) {
     try {
-      editCategoryHandler(category);
+      await editCategoryHandler(category);
     } catch (error) {
       console.log(error.message);
     }
@@ -88,6 +90,8 @@ function ManageCategoriesPage() {
     if (!response.ok) {
       throw new Error('Nie udało się dodać kategorii.');
     }
+
+    console.log("dodano");
   }
 
   async function editCategoryHandler(category) {
@@ -112,47 +116,12 @@ function ManageCategoriesPage() {
     }
   }
 
-  if (loadedCategories !== null) {
-    categoryList = loadedCategories.map(category => (
-      <tr key={category.categoryId}>
-        <td>
-          {category.categoryId}
-        </td>
-        <td>
-        {category.categoryName} 
-        </td>
-        <td>
-          <button onClick={() => onEditHandler(category)}>Edytuj</button>
-        </td>
-        <td>
-          <button onClick={() => onDeleteHandler(category.categoryId)}>Usuń</button>
-        </td>
-      </tr>
-    ));
-
-    categoryList = (
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nazwa kategorii</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {categoryList}
-        </tbody>
-      </table>
-    );
-  }
-
   return (
     <div>
       <p>Kategorie produktów</p>
         {!showingAddCategoryForm && !showingUpdateCategoryForm && (<button type='button' onClick={onClickAddCategory}>Dodaj</button>)}
         
-        {!showingAddCategoryForm && !showingUpdateCategoryForm && categoryList}
+        {!showingAddCategoryForm && !showingUpdateCategoryForm && <Categories onEditHandler={onEditHandler} onDeleteHandler={onDeleteHandler} loadedCategories={loadedCategories}/>}
         {showingAddCategoryForm && <AddCategoryForm onAddCategory={onAddCategory}/>}
         {showingUpdateCategoryForm && <EditCategoryForm onEditCategory={onEditCategory} category={currentCategory}/>}
     </div>
