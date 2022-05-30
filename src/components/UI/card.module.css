@@ -66,19 +66,22 @@
   padding-top: 20px;
   margin-bottom: 0;
   display: flex;
+  text-align: center;
+  align-items: center;
 }
 
 .container .input{
   font-family: Lato, sans-serif;
   float: right;
-  border: 1px solid lightgray;
+  max-width: 50px;
   border-radius: 5px;
   background-color: transparent;
   text-align: center;
-  padding: 0.9rem 0.8rem 0.9rem 0.8rem;
-  font-size: 1rem;
+  font-size: 0.99rem;
   color: rgb(167, 109, 145);
 	font-weight: bold;
+  margin-top: 20px;
+  border: 1px solid lightgray;
 }
 
 .container .btn{
@@ -87,15 +90,12 @@
   border-radius: 5px;
   background-color: transparent;
   font-weight: bold;
-  color: inherit;
   width: 80%;
   padding: 0.9rem;
   cursor: pointer;
   float: left;
   font-size: 1rem;
   color: rgb(167, 109, 145);
-  margin:0 auto;
-  
 }
 
 .btn:hover{
