@@ -12,6 +12,12 @@ function AddCategoryForm(props) {
     props.onAddCategory({
       categoryName: enteredCategoryName
     });
+
+    onCancelHandler();
+  }
+
+  function onCancelHandler() {
+    props.onCancelHandler();
   }
 
   return (
@@ -21,7 +27,10 @@ function AddCategoryForm(props) {
           <label htmlFor='categoryName'>Nazwa kategorii</label>
           <input className={classes.input} type='text' id='categoryName' ref={categoryNameInput} placeholder="Wpisz nazwę kategorii..."/>
         </div>
-        <button className={classes.button} type='submit'>Dodaj</button>
+        <div className={classes.btn_container}>
+          <button className={classes.button} type='submit'>Zapisz</button>
+          <button className={classes.button} type='button' onClick={onCancelHandler}>Anuluj</button>
+        </div>
       </form>
     </div>
   );

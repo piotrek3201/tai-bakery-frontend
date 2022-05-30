@@ -13,8 +13,6 @@ function ManageProductsPage() {
   const [showingUpdateProductForm, setShowingUpdateProductForm] = useState(null);
   const [currentProduct, setCurrentProduct] = useState(null);
 
-  let productList;
-
   const fetchProductsHandler = useCallback(async () => {
     try {
       const response = await fetch(`${API_URL}/products/all`);
@@ -50,7 +48,7 @@ function ManageProductsPage() {
     try {
       await deleteProductHandler(id);
     } catch (error) {
-      console.log(error.message);
+      alert(error.message);
     }
     fetchProductsHandler();
   }
@@ -59,7 +57,7 @@ function ManageProductsPage() {
     try {
       await addProductHandler(product);
     } catch (error) {
-      console.log(error.message);
+      alert(error.message);
     }
     
     setShowingAddProductForm(false);
@@ -67,11 +65,10 @@ function ManageProductsPage() {
   }
 
   async function onEditProduct(product) {
-    console.log(product);
     try {
       await editProductHandler(product);
     } catch (error) {
-      console.log(error.message);
+      alert(error.message);
     }
     setShowingUpdateProductForm(false);
     fetchProductsHandler();

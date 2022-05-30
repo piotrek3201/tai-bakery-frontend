@@ -101,7 +101,7 @@ function AddProductForm(props) {
         </div>
         <div>
           <label htmlFor='price'>Cena</label>
-          <input type='number' id='price' ref={priceInput} placeholder="..."/>
+          <input type='number' id='price' ref={priceInput} placeholder="..." step="0.01"/>
         </div>
         <div>
           <label htmlFor='url'>URL zdjęcia</label>

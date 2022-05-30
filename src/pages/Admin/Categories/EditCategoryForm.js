@@ -13,6 +13,12 @@ function EditCategoryForm(props) {
       categoryId: props.category.categoryId,
       categoryName: enteredCategoryName
     });
+
+    onCancelHandler();
+  }
+
+  function onCancelHandler() {
+    props.onCancelHandler();
   }
   
   return (
@@ -22,7 +28,10 @@ function EditCategoryForm(props) {
           <label htmlFor='categoryName'>Nazwa kategorii</label>
           <input type='text' id='categoryName' ref={categoryNameInput} defaultValue={props.category.categoryName}/>
         </div>
-        <button className={classes.button} type='submit'>Zapisz</button>
+        <div className={classes.btn_container}>
+          <button className={classes.button} type='submit'>Zapisz</button>
+          <button className={classes.button} type='button' onClick={onCancelHandler}>Anuluj</button>
+        </div>
       </form>
     </div>
   );

@@ -10,10 +10,8 @@ function ManageCategoriesPage() {
 
   const [loadedCategories, setLoadedCategories] = useState([]);
   const [showingAddCategoryForm, setShowingAddCategoryForm] = useState(false);
-  const [showingUpdateCategoryForm, setShowingUpdateAddCategoryForm] = useState(null);
+  const [showingUpdateCategoryForm, setShowingUpdateCategoryForm] = useState(null);
   const [currentCategory, setCurrentCategory] = useState(null);
-
-  let categoryList;
 
   const fetchCategoriesHandler = useCallback(async () => {
     console.log("Zasysamy");
@@ -28,7 +26,7 @@ function ManageCategoriesPage() {
       console.log(responseData);
       setLoadedCategories(responseData);
     } catch (error) {
-      console.log(error.message);
+      alert(error.message);
     }
   }, []);
 
@@ -36,15 +34,13 @@ function ManageCategoriesPage() {
     fetchCategoriesHandler();
   }, [fetchCategoriesHandler]);
 
-  // console.log(loadedCategories);
-
   function onClickAddCategory() {
     setShowingAddCategoryForm(true);
   }
 
   function onEditHandler(category) { 
     setCurrentCategory(category);
-    setShowingUpdateAddCategoryForm(true);
+    setShowingUpdateCategoryForm(true);
   }
 
   async function onDeleteHandler(id) {
@@ -53,20 +49,19 @@ function ManageCategoriesPage() {
     try {
       await deleteCategoryHandler(id);
     } catch (error) {
-      console.log(error.message);
+      alert(error.message);
     }
     fetchCategoriesHandler();
   }
 
   async function onAddCategory(category) {
-    console.log(category);
     try {
       await addCategoryHandler(category);
     } catch (error) {
-      console.log(error.message);
+      alert(error.message);
     }
     
-    setShowingAddCategoryForm(false);
+    setShowingUpdateCategoryForm(false);
     fetchCategoriesHandler();
   }
 
@@ -74,9 +69,9 @@ function ManageCategoriesPage() {
     try {
       await editCategoryHandler(category);
     } catch (error) {
-      console.log(error.message);
+      alert(error.message);
     }
-    setShowingUpdateAddCategoryForm(false);
+    setShowingUpdateCategoryForm(false);
     fetchCategoriesHandler();
   }
 
@@ -117,6 +112,11 @@ function ManageCategoriesPage() {
     }
   }
 
+  function onCancelHandler() {
+    setShowingAddCategoryForm(false);
+    setShowingUpdateCategoryForm(false);
+  }
+
   return (
     <div>
       <div className={classes.container}>
@@ -124,8 +124,8 @@ function ManageCategoriesPage() {
         {!showingAddCategoryForm && !showingUpdateCategoryForm && (<button className={classes.button} type='button' onClick={onClickAddCategory}>Dodaj</button>)}
       </div>
         {!showingAddCategoryForm && !showingUpdateCategoryForm && <Categories onEditHandler={onEditHandler} onDeleteHandler={onDeleteHandler} loadedCategories={loadedCategories}/>}
-        {showingAddCategoryForm && <AddCategoryForm onAddCategory={onAddCategory}/>}
-        {showingUpdateCategoryForm && <EditCategoryForm onEditCategory={onEditCategory} category={currentCategory}/>}
+        {showingAddCategoryForm && <AddCategoryForm onAddCategory={onAddCategory} onCancelHandler={onCancelHandler}/>}
+        {showingUpdateCategoryForm && <EditCategoryForm onEditCategory={onEditCategory} onCancelHandler={onCancelHandler} category={currentCategory}/>}
     </div>
   );
 }

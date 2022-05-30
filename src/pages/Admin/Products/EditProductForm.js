@@ -29,7 +29,7 @@ function EditProductForm(props) {
   if(loadedCategories != null) {
     categories = (
       loadedCategories.map(category => (
-       <option key={category.categoryId} value={category.categoryId}>{category.categoryName}</option> 
+       <option key={category.categoryId} value={category.categoryId} >{category.categoryName}</option> 
       ))
     );
   }
@@ -51,7 +51,12 @@ function EditProductForm(props) {
     const enteredIsByWeight = isByWeightInput.current.checked;
     const enteredIsCustomizable = isCustomizableInput.current.checked;
     const enteredPrice = priceInput.current.value;
-    const enteredUrl = urlInput.current.value;
+    let enteredUrl = urlInput.current.value;
+
+    if(enteredUrl === "") {
+      enteredUrl = "url";
+      console.log(enteredUrl);
+    }
 
     props.onEditProduct({
       productId: props.product.productId,
@@ -104,7 +109,7 @@ function EditProductForm(props) {
           <input type='text' id='url' ref={urlInput} defaultValue={props.product.imageUrl} />
         </div>
         <div className={classes.btn_container}>
-          <button className={classes.button} type='submit'>Dodaj</button>
+          <button className={classes.button} type='submit'>Zapisz</button>
           <button className={classes.button} type='button' onClick={onCancelHandler}>Anuluj</button>
         </div>
       </form>
