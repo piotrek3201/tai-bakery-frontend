@@ -9,7 +9,7 @@ function ManageOrdersPage() {
   const [loadedOrders, setLoadedOrders] = useState([]);
   const [currentOrder, setCurrentOrder] = useState(null);
 
-  const fetchGlazesHandler = useCallback(async () => {
+  const fetchOrdersHandler = useCallback(async () => {
     try {
       const response = await fetch(`${API_URL}/orders/all`);
       
@@ -26,18 +26,61 @@ function ManageOrdersPage() {
   }, []);
 
   useEffect(() => {
-    fetchGlazesHandler();
-  }, [fetchGlazesHandler]);
+    fetchOrdersHandler();
+  }, [fetchOrdersHandler]);
 
-  
+  async function onEditHandler(order) {
+    if(order.isFinished)
+      order.isFinished = false;
+    else
+      order.isFinished = true;
+    try {
+      await editOrderHandler(order);
+    } catch (error) {
+      alert(error.message);
+    }
+    fetchOrdersHandler();
+  }
+
+  async function editOrderHandler(order) {
+    const response = await fetch(`${API_URL}/orders/update`, {
+      method: 'PUT',
+      body: JSON.stringify(order),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (!response.ok) {
+      throw new Error('Nie udało się zaktualizować zamówienia.');
+    }
+  }
+
+  async function deleteOrderHandler(id) {
+    const response = await fetch(`${API_URL}/orders/delete/${id}`, {
+      method: 'DELETE'
+    });
+    if (!response.ok) {
+      throw new Error('Nie udało się usunąć zamówienia.');
+    }
+  }
+
+  async function onDeleteHandler(id) {
+    if (!window.confirm("Czy na pewno chcesz usunąć to zamówienie? Tej operacji nie można cofnąć."))
+      return;
+    try {
+      await deleteOrderHandler(id);
+    } catch (error) {
+      alert(error.message);
+    }
+    fetchOrdersHandler();
+  }
 
   return (
     <div>
-      <div >
+      <div>
         <p>Zamówienia</p>
-        
       </div>
-        <Orders loadedOrders={loadedOrders} />
+        <Orders loadedOrders={loadedOrders} onEditHandler={onEditHandler} onDeleteHandler={onDeleteHandler} />
     </div>
   );
 }

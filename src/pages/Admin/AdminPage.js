@@ -8,6 +8,7 @@ import ManageProductsPage from './Products/ManageProductsPage';
 import classes from './AdminPage.module.css';
 import ManageGlazesPage from './Glazes/ManageGlazesPage';
 import ManageOrdersPage from './Orders/ManageOrdersPage';
+import OrderDetailsPage from './Orders/OrderDetailsPage';
 
 function AdminPage() {
   const match = useRouteMatch();
@@ -26,7 +27,10 @@ function AdminPage() {
             <Route path={`${match.path}/products`}>
               <ManageProductsPage />
             </Route>
-            <Route path={`${match.path}/orders`}>
+            <Route path={`${match.path}/orders/:orderId`}>
+              <OrderDetailsPage />
+            </Route>
+            <Route path={`${match.path}/orders`} exact>
               <ManageOrdersPage />
             </Route>
             <Route path={`${match.path}/glazes`}>

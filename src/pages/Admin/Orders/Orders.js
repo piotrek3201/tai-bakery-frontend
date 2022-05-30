@@ -1,6 +1,10 @@
+import { useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import classes from "./Orders.module.css";
 
 const Orders = props => {
+  const match = useRouteMatch();
+
   let orderList;
   if (props.loadedOrders !== null) {
       orderList = props.loadedOrders.map(order => {
@@ -9,7 +13,7 @@ const Orders = props => {
         return (
           <tr key={order.orderId}>
             <td>
-              {order.orderId}
+              <Link to={`${match.path}/${order.orderId}`}>{order.orderId}</Link>
             </td>
             <td>
               {order.customerEmail} 
@@ -26,6 +30,12 @@ const Orders = props => {
             <td>
               {order.isFinished ? "TAK" : "NIE"}
             </td>
+            <td>
+              <button className={classes.button} onClick={() => props.onEditHandler(order)}>Zmień status</button>
+            </td>
+            <td>
+              <button className={classes.button} onClick={() => props.onDeleteHandler(order.orderId)}>Usuń</button>
+            </td>
           </tr>
       )});
   
@@ -40,6 +50,8 @@ const Orders = props => {
                 <th>Data dostawy</th>
                 <th>Kwota</th>
                 <th>Ukończone?</th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
