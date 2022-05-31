@@ -9,6 +9,10 @@ import classes from './AdminPage.module.css';
 import ManageGlazesPage from './Glazes/ManageGlazesPage';
 import ManageOrdersPage from './Orders/ManageOrdersPage';
 import OrderDetailsPage from './Orders/OrderDetailsPage';
+import ManageSizesPage from './Sizes/ManageSizesPage';
+import ManageCakesPage from './Cakes/ManageCakesPage';
+import ManageFillingsPage from './Fillings/ManageFillingsPage';
+import ManageAdditionsPage from './Additions/ManageAdditionsPage';
 
 function AdminPage() {
   const match = useRouteMatch();
@@ -35,6 +39,18 @@ function AdminPage() {
             </Route>
             <Route path={`${match.path}/glazes`}>
               <ManageGlazesPage />
+            </Route>
+            <Route path={`${match.path}/sizes`}>
+              <ManageSizesPage />
+            </Route>
+            <Route path={`${match.path}/cakes`}>
+              <ManageCakesPage />
+            </Route>
+            <Route path={`${match.path}/fillings`}>
+              <ManageFillingsPage />
+            </Route>
+            <Route path={`${match.path}/additions`}>
+              <ManageAdditionsPage />
             </Route>
             <Route path='*'>
               <NotFoundPage />

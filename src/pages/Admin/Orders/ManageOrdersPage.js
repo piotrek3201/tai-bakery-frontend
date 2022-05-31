@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from 'react'
 import API_URL from '../../../utilities/Constants';
 import Orders from './Orders';
 
-//import classes from './ManageOrdersPage.module.css';
+import classes from './ManageOrdersPage.module.css';
 
 function ManageOrdersPage() {
   const [loadedOrders, setLoadedOrders] = useState([]);
@@ -77,7 +77,7 @@ function ManageOrdersPage() {
 
   return (
     <div>
-      <div>
+      <div className={classes.container}>
         <p>Zamówienia</p>
       </div>
         <Orders loadedOrders={loadedOrders} onEditHandler={onEditHandler} onDeleteHandler={onDeleteHandler} />
