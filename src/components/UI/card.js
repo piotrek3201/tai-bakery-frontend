@@ -1,6 +1,7 @@
 import classes from './card.module.css';
 import { useState, useContext } from 'react';
 import CartContext from '../store/cart-context';
+import { Link } from "react-router-dom";
 
 const Card = props => {
   const cartCtx = useContext(CartContext);
@@ -53,7 +54,9 @@ const Card = props => {
         {props.isByWeight !== true && <h3 className={classes.price}>{props.price  + " zł/szt"}</h3>}
         {props.isByWeight === true && <h3 className={classes.price}>{props.price  + " zł/kg"}</h3>}
         <form className={classes.container} onSubmit={submitHandler}>
-          <button className={classes.btn}>Dodaj do koszyka</button>
+          {props.isCustomizable !== true && <button className={classes.btn}>Dodaj do koszyka</button>}
+          {props.isCustomizable === true && <Link to='/create' className={classes.btn}>Customizuj</Link>}
+          {/* {props.isCustomizable === true && <button className={classes.btn}>Customizuj</button>} */}
           {props.isByWeight === true && <input onChange={changeHandler} className={classes.input} value={val} type='number' min="0.1" max="10" step="0.1"/>}
           {props.isByWeight !== true && <input onChange={changeHandler} className={classes.input} value={val} type='number' min="1" max="10" step="1"/>}
         </form>

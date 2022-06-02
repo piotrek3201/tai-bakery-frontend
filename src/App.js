@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import ContactPage from './pages/ContactPage';
 import AdminPage from './pages/Admin/AdminPage';
 import CartPage from './pages/Cart/CartPage';
+import CreatePage from './pages/Create/CreatePage';
 
 
 function App() {
@@ -53,6 +54,9 @@ function App() {
         </Route>
         <Route path='/cart'>
           <CartPage />
+        </Route>
+        <Route path='/create'>
+          <CreatePage />
         </Route>
         <Route path='*'>
           <NotFoundPage />

@@ -98,6 +98,15 @@
   color: rgb(167, 109, 145);
 }
 
+.container a{
+  text-decoration: none;
+}
+
+.btn:active{
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
 .btn:hover{
   color: rgb(139, 27, 83);
   
