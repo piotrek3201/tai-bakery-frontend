@@ -1,28 +1,33 @@
 import classes from './CreatePage.module.css';
 import { v4 as uuidv4 } from "uuid";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 const GlazeList = props => {
-    // console.log(props.items);
-    let data;
-    const [glaze, setGlaze] = useState("");
+    let glazes;
+
+    const glazeInput = useRef();
+
+    const changeHandler = event => {
+        event.preventDefault();
+        const enteredGlazeId = glazeInput.current.value;
+        props.onChangeHandler(enteredGlazeId);
+        // console.log(enteredglazesId);
+    };
 
     if(props.items) {
-        data = props.items.map(item => (
-            <label key={item.glazeId}>{item.glazeName}
-                <input type="radio" name="glaze" defaultChecked onChange={val => setGlaze(val.target.value)}/>
-                <span className={classes.checkmark}></span>
-            </label>
+        glazes = props.items.map(item => (
+            <option key={item.glazeId} value={item.glazeId}>{item.glazeName}</option> 
         ));
-
-        const checkedValue = props.items[props.items.length - 1].glazeName;
-        if(glaze === ""){
-            setGlaze(props.items[props.items.length - 1].glazeName);
-        }
-
-        console.log(glaze);
     }
-    return <div>{data}</div>;
+
+    return <div>
+        <form >
+            <select name='glazes' id='glazes-select'  onChange={changeHandler} ref={glazeInput}>
+                <option value="" >--Wybierz polewę--</option>
+                {glazes}
+            </select>
+        </form>
+    </div>;
 };
 
 export default GlazeList;

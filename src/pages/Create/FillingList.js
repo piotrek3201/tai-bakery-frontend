@@ -1,28 +1,33 @@
 import classes from './CreatePage.module.css';
 import { v4 as uuidv4 } from "uuid";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 const FillingList = props => {
-    // console.log(props.items);
-    let data;
-    const [filling, setFilling] = useState("");
+    let fillings;
+
+    const fillingInput = useRef();
+
+    const changeHandler = event => {
+        event.preventDefault();
+        const enteredFillingId = fillingInput.current.value;
+        props.onChangeHandler(enteredFillingId);
+        // console.log(enteredfillingsId);
+    };
 
     if(props.items) {
-        data = props.items.map(item => (
-            <label key={item.fillingId}>{item.fillingName}
-                <input type="radio" name="filling" defaultChecked onChange={val => setFilling(val.target.value)}/>
-                <span className={classes.checkmark}></span>
-            </label>
+        fillings = props.items.map(item => (
+            <option key={item.fillingId} value={item.fillingId}>{item.fillingName}</option> 
         ));
-
-        const checkedValue = props.items[props.items.length - 1].fillingName;
-        if(filling === ""){
-            setFilling(props.items[props.items.length - 1].fillingName);
-        }
-
-        console.log(filling);
     }
-    return <div>{data}</div>;
+
+    return <div>
+        <form >
+            <select name='fillings' id='fillings-select'  onChange={changeHandler} ref={fillingInput}>
+                <option value="" >--Wybierz nadzienie--</option>
+                {fillings}
+            </select>
+        </form>
+    </div>;
 };
 
 export default FillingList;

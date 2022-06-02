@@ -1,28 +1,33 @@
 import classes from './CreatePage.module.css';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { v4 as uuidv4 } from "uuid";
 
 const AdditionList = props => {
-    let data;
-    const [addition, setAddition] = useState("");
+    let additions;
+
+    const additionInput = useRef();
+
+    const changeHandler = event => {
+        event.preventDefault();
+        const enteredAdditionId = additionInput.current.value;
+        props.onChangeHandler(enteredAdditionId);
+        // console.log(enteredAdditionId);
+    };
 
     if(props.items) {
-        data = props.items.map(item => (
-            <label key={item.additionId}>{item.additionName}
-                <input type="radio" name="addition" value={item.additionName} defaultChecked onChange={val => setAddition(val.target.value)}/>
-                <span className={classes.checkmark}></span>
-            </label>
+        additions = props.items.map(item => (
+            <option key={item.additionId} value={item.additionId}>{item.additionName}</option> 
         ));
-
-        const checkedValue = props.items[props.items.length - 1].additionName;
-        if(addition === ""){
-            setAddition(props.items[props.items.length - 1].additionName);
-        }
-
-        console.log(addition);
     }
 
-    return <div>{data}</div>;
+    return <div>
+        <form >
+            <select name='addition' id='addition-select'  onChange={changeHandler} ref={additionInput}>
+                <option value="" >--Wybierz dodatek--</option>
+                {additions}
+            </select>
+        </form>
+    </div>;
 };
 
 export default AdditionList;
