@@ -16,14 +16,14 @@ const SizeList = props => {
 
     if(props.items) {
         sizes = props.items.map(item => (
-            <option key={item.sizeId} value={item.sizeId}>{item.diameter}</option> 
+            <option key={item.sizeId} value={item.sizeId}>{item.diameter} cm</option> 
         ));
     }
 
     return <div>
         <form >
             <select name='sizes' id='sizes-select'  onChange={changeHandler} ref={sizeInput}>
-                <option value="" >--Wybierz rozmiar--</option>
+                <option value="" >--Wybierz średnicę--</option>
                 {sizes}
             </select>
         </form>

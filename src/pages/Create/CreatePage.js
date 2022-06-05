@@ -62,7 +62,8 @@ const CreatePage = () => {
             if(cake == products[1][i].cakeId){
                 setCake({
                     id: cake,
-                    name: products[1][i].cakeName
+                    name: products[1][i].cakeName,
+                    color: products[1][i].cakeColor
                 })
             }
         }
@@ -73,7 +74,8 @@ const CreatePage = () => {
             if(filling == products[2][i].fillingId){
                 setFilling({
                     id: filling,
-                    name: products[2][i].fillingName
+                    name: products[2][i].fillingName,
+                    color: products[2][i].fillingColor
                 })
             }
         }
@@ -84,7 +86,8 @@ const CreatePage = () => {
             if(glaze == products[3][i].glazeId){
                 setGlaze({
                     id: glaze,
-                    name: products[3][i].glazeName
+                    name: products[3][i].glazeName,
+                    color: products[3][i].glazeColor
                 })
             }
         }
@@ -95,23 +98,26 @@ const CreatePage = () => {
             if(addition == products[0][i].additionId){
                 setAddition({
                     id: addition,
-                    name: products[0][i].additionName
+                    name: products[0][i].additionName,
+                    imageUrl: products[0][i].additionVisual
                 })
             }
         }
     };
-
         
     return <div className={classes.container}>
         <div className={classes.product_box}>
-            <h2>{size.id && size.diameter}</h2>
-            <h2>{cake.id && cake.name}</h2>
-            <h2>{filling.id && filling.name}</h2>
-            <h2>{glaze.id && glaze.name}</h2>
-            <h2>{addition.id && addition.name}</h2>
+            <div className={classes.cake} style={{backgroundColor: glaze.color, backgroundImage: `url(${addition.imageUrl})`}}>
+            </div>
+            <br />
+            <div className={classes.slice} style={{backgroundColor: glaze.color}}>
+                <div className={classes.biscuit_top} style={{backgroundColor: cake.color}}></div>
+                <div className={classes.filling} style={{backgroundColor: filling.color}}></div>
+                <div className={classes.biscuit_bottom} style={{backgroundColor: cake.color}}></div>
+            </div>
         </div>
         <div className={classes.additions_box}>
-            <h2>Rozmiar</h2>
+            <h2>Rozmiar (cm)</h2>
             <SizeList items={products[4]} onChangeHandler={getSizes}/>
             <h2>Ciasto</h2>
             <CakeList items={products[1]} onChangeHandler={getCakes}/>

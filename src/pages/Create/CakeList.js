@@ -14,6 +14,7 @@ const CakeList = props => {
         // console.log(enteredCakeId);
     };
 
+
     if(props.items) {
         cakes = props.items.map(item => (
             <option key={item.cakeId} value={item.cakeId}>{item.cakeName}</option> 

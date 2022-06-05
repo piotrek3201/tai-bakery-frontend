@@ -117,7 +117,7 @@ function ManageFillingsPage() {
   return (
     <div>
       <div className={classes.container}>
-        <p>Rodzaje ciast</p>
+        <p>Nadzienia</p>
         {!showingAddFillingForm && !showingUpdateFillingForm && (<button className={classes.button} type='button' onClick={onClickAddFilling}>Dodaj</button>)}
       </div>
         {!showingAddFillingForm && !showingUpdateFillingForm && <Fillings onEditHandler={onEditHandler} onDeleteHandler={onDeleteHandler} loadedFillings={loadedFillings}/>}
