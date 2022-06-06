@@ -7,7 +7,7 @@ function Layout(props) {
   return (
     <CardProvider>
       <div className={classes.layout}>
-        <MainNavigation categories={props.categories}/>
+        <MainNavigation categories={props.categories} userData={props.userData} isLogged={props.isLogged}/>
         <main className={classes.main}>
           {props.children}
         </main>
