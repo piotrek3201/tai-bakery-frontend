@@ -2,6 +2,7 @@ import { Fragment, useState, useEffect } from "react";
 import classes from './ProductsPage.module.css';
 import ProductsList from "../components/UI/ProductsList";
 import { useParams } from "react-router-dom";
+import API_URL from "../utilities/Constants";
 
 const ProductsPage = props => {
 
@@ -21,9 +22,9 @@ const ProductsPage = props => {
     const [name, setName] = useState("");
 
     if(id === 0){
-        link = 'https://localhost:7046/api/products/all';
+        link = `${API_URL}/products/all`;
     } else {
-        link = `https://localhost:7046/api/products?categoryId=${id}`;
+        link = `${API_URL}/products?categoryId=${id}`;
     }
 
     useEffect(() => {
