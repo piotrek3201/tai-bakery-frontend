@@ -39,7 +39,7 @@ const CartItems = () => {
                     <button className={classes.add} onClick={cartItemAddHandler.bind(null, item)}></button>
                 </td>
                 <td className={classes.sum}>
-                    {sum + ' zł'}
+                    {sum.toFixed(2) + ' zł'}
                 </td>
                 <td>
                     <button className={classes.remove_all} onClick={cartItemRemoveWholeHandler.bind(null, item.id)}></button>
@@ -60,7 +60,7 @@ const CartItems = () => {
                     <button className={classes.add} onClick={cartItemAddHandler.bind(null, item)}></button>
                 </td>
                 <td className={classes.sum}>
-                    {sum + ' zł'}
+                    {sum.toFixed(2) + ' zł'}
                 </td>
                 <td>
                     <button className={classes.remove_all} onClick={cartItemRemoveWholeHandler.bind(null, item.id)}></button>

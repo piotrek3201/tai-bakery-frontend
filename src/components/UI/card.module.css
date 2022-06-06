@@ -126,3 +126,8 @@
   text-align: center;
   font-size: 2.5rem;
 }
+
+.container input[type="number"]{
+  margin: 0;
+  padding: 15px;
+}

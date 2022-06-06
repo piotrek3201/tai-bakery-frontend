@@ -54,7 +54,7 @@
     background-color: rgb(139, 27, 83);
 } */
 
-input[type=text], textarea{
+.container input[type=text], textarea{
     margin: 30px auto 20px auto;
     min-width: 380px;
     padding: 15px;
@@ -64,7 +64,7 @@ input[type=text], textarea{
     resize: vertical;
 }
 
-input[type=text]:focus, textarea:focus {
+.container input[type=text]:focus, textarea:focus {
     border: 3px solid rgb(139, 27, 83);
     background-color: rgba(250, 167, 239, 0.2);
 }
@@ -97,7 +97,7 @@ input[type=text]:focus, textarea:focus {
 }
 
 
-input[type=number]{
+.container input[type=number]{
     margin: 30px auto 20px auto;
     max-width: 100px;
     padding: 15px;
@@ -106,7 +106,7 @@ input[type=number]{
     border: 1px solid rgb(139, 27, 83);
 }
 
-input[type=number]:focus {
+.container input[type=number]:focus {
     border: 3px solid rgb(139, 27, 83);
     background-color: rgba(250, 167, 239, 0.2);
 }

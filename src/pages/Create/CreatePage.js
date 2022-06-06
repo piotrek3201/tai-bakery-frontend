@@ -38,28 +38,28 @@ const CreatePage = () => {
         fetchProducts();
     }, [fetchProducts]);
 
-    const [size, setSize] = useState([]);
-    const [cake, setCake] = useState([]);
-    const [filling, setFilling] = useState([]);
-    const [glaze, setGlaze] = useState([]);
-    const [addition, setAddition] = useState([]);
+    const [size, setSize] = useState({});
+    const [cake, setCake] = useState({});
+    const [filling, setFilling] = useState({});
+    const [glaze, setGlaze] = useState({});
+    const [addition, setAddition] = useState({});
 
     const getSizes = size => {
+        size = Number(size);
         for(var i = 0; i < products[4].length; i++){
-            if(size == products[4][i].sizeId){
+            if(size === products[4][i].sizeId){
                 setSize({
                     id: size,
                     diameter: products[4][i].diameter
                 })
             }
         }
-        // console.log(size);
-        // setSize(size);
     };
 
     const getCakes = cake => {
+        cake = Number(cake);
         for(var i = 0; i < products[1].length; i++){
-            if(cake == products[1][i].cakeId){
+            if(cake === products[1][i].cakeId){
                 setCake({
                     id: cake,
                     name: products[1][i].cakeName,
@@ -70,8 +70,9 @@ const CreatePage = () => {
     };
 
     const getFillings = filling => {
+        filling = Number(filling);
         for(var i = 0; i < products[2].length; i++){
-            if(filling == products[2][i].fillingId){
+            if(filling === products[2][i].fillingId){
                 setFilling({
                     id: filling,
                     name: products[2][i].fillingName,
@@ -82,8 +83,9 @@ const CreatePage = () => {
     };
 
     const getGlazes = glaze => {
+        glaze = Number(glaze);
         for(var i = 0; i < products[3].length; i++){
-            if(glaze == products[3][i].glazeId){
+            if(glaze === products[3][i].glazeId){
                 setGlaze({
                     id: glaze,
                     name: products[3][i].glazeName,
@@ -94,8 +96,9 @@ const CreatePage = () => {
     };
 
     const getAdditions = addition => {
+        addition = Number(addition);
         for(var i = 0; i < products[0].length; i++){
-            if(addition == products[0][i].additionId){
+            if(addition === products[0][i].additionId){
                 setAddition({
                     id: addition,
                     name: products[0][i].additionName,

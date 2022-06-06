@@ -1,11 +1,12 @@
 .product_box{
-    min-height: 80vh;
+    min-height: 60vh;
     width: 65%;
     background-color: white;
     box-shadow: 3px 8px 31px 1px rgb(109, 109, 109);
     border-radius: 5px;
     z-index: 1;
     font-family: Lato, sans-serif;
+    padding-top: 15vh;
 }
 
 .additions_box{
@@ -57,7 +58,7 @@
     overflow: hidden;
     margin: 0 auto;
     width: 300px;
-    height: 300px;
+    height: 270px;
     border-radius: 150px/75px;
     background-color: wheat;
     border: 1px solid black;

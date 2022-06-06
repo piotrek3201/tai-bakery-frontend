@@ -18,6 +18,7 @@
     box-shadow: 5px 8px 15px -3px rgba(109, 109, 109, 0.267);
     margin-left: -4px;
     border-radius: 5px;
+    padding: 0px 20px;
 }
 
 .items{
@@ -100,3 +101,70 @@
 	
 	background-color: rgba(250, 167, 239, 0.2);
 }
+
+/* Delivery Form */
+
+.name, .full_address, .address, .contact, .delivery_type, .date{
+    display: flex;
+}
+
+.input input[type=text], .input input[type=email], .input input[type=phone], .input input[type=datetime-local]{
+    /* margin: 30px auto 20px auto; */
+    float: left;
+    width: 80%;
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid rgb(139, 27, 83);
+    resize: vertical;
+    margin: 15px 0;
+}
+
+.input input[type=datetime-local]{
+    width: 50%;
+}
+
+.input{
+    width: 100%;
+}
+
+.address input[type=text]{
+    width: 90%;
+}
+
+.input input[type=text]:focus{
+    border: 3px solid rgb(139, 27, 83);
+    background-color: rgba(250, 167, 239, 0.2);
+}
+
+.input input[type="checkbox"] {
+    appearance: none;
+    margin: 15px 0;
+    font: inherit;
+    color: currentColor;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgb(139, 27, 83);
+    border-radius: 3px;
+    transition: box-shadow .3s;
+}
+
+.input input[type="checkbox"]::before {
+    content: "";
+    width: 30px;
+    height: 30px;
+}
+
+.input input:checked{
+    box-shadow: inset 0 0 0 20px rgb(139, 27, 83);
+}
+
+.input label, .input input{
+    display: block;
+    text-align: left;
+}
+
+.input label{
+    margin-top: 5px;
+}
+

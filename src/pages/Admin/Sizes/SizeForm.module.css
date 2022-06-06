@@ -41,7 +41,7 @@
     font-size: 25px;
 }
 
-input[type=text]{
+.container input[type=text]{
     margin-top: 30px;
     min-width: 350px;
     padding: 15px;
@@ -50,7 +50,7 @@ input[type=text]{
     border: 1px solid rgb(139, 27, 83);
 }
 
-input[type=text]:focus {
+.container input[type=text]:focus {
     border: 3px solid rgb(139, 27, 83);
     background-color: rgba(250, 167, 239, 0.2);
 }
