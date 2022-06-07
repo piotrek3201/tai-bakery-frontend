@@ -14,25 +14,38 @@ const PersonalDataForm = props => {
     const postcodeInput = useRef();
     const dateInput = useRef();
 
-    const [enteredDelivery, setDelivery] = useState(false);
+    const [enteredDelivery, setDelivery] = useState(true);
     const [enteredSelfPickUp, setSelfPickUp] = useState(false);
     const [enteredDate, setDate] = useState("");
 
     const changeDeliveryHandler = () => {
-        setDelivery(deliveryInput.current.checked);
-        setSelfPickUp(selfPickUpInput.current.checked);
+
+        if(enteredDelivery === true && selfPickUpInput.current.checked === true){
+            setSelfPickUp(selfPickUpInput.current.checked);
+            setDelivery(false);
+            deliveryInput.current.checked = false;
+        }
+
+        if(enteredSelfPickUp === true && deliveryInput.current.checked === true){
+            setDelivery(deliveryInput.current.checked);
+            setSelfPickUp(false);
+            selfPickUpInput.current.checked = false;
+        }
+
+        // setDelivery(deliveryInput.current.checked);
+        // setSelfPickUp(selfPickUpInput.current.checked);
     }
 
     const submitHandler = (event) => {
         event.preventDefault();
 
-        let enteredName = "";
-        let enteredLastName = "";
-        let enteredAddress = "";
-        let enteredPhone = "";
-        let enteredCity = "";
-        let enteredPostcode = "";
-        let enteredEmail = "";
+        let enteredName = "string";
+        let enteredLastName = "string";
+        let enteredAddress = "string";
+        let enteredPhone = "string";
+        let enteredCity = "string";
+        let enteredPostcode = "string";
+        let enteredEmail = "string";
 
         if(enteredDelivery === false){
             enteredName = nameInput.current.value;
@@ -50,12 +63,13 @@ const PersonalDataForm = props => {
         }
 
         props.onEnterPersonalData({
-            name: enteredName,
-            lastName: enteredLastName,
-            phone: enteredPhone,
-            email: enteredEmail,
-            city: enteredCity,
-            postcode: enteredPostcode,
+            customerEmail: enteredEmail,
+            customerName: enteredName + " " + enteredLastName,
+            // customerLastName: enteredLastName,
+            customerPhone: enteredPhone,
+            customerAddress: enteredAddress,
+            customerCity: enteredCity,
+            customerPostalCode: enteredPostcode,
             selfPickUp: enteredSelfPickUp,
             deliveryDate: enteredDate
         });
@@ -77,12 +91,6 @@ const PersonalDataForm = props => {
                 <div className={classes.input}>
                     <label>Kod pocztowy</label>
                     <input id="postcode" name="postcode" type="text" ref={postcodeInput} pattern="^[0-9]{2}[-][0-9]{3}" placeholder="00-000" required/>
-                </div>
-            </div>
-            <div className={classes.date}>
-                <div className={classes.input}>
-                    <label>Data i godzina dostawy</label>
-                    <input type="datetime-local" id="time" name="time" ref={dateInput} onChange={event => {setDate(event.target.value)}} required/>
                 </div>
             </div>
         </Fragment>
@@ -110,14 +118,21 @@ const PersonalDataForm = props => {
                     <input type="email" id="email" name="email" ref={emailInput} placeholder="Email..." required/>
                 </div>
             </div>
+            <div className={classes.date}>
+                <div className={classes.input}>
+                    {enteredDelivery === true && <label>Data i godzina dostawy</label>}
+                    {enteredDelivery !== true && <label>Data i godzina odbioru</label>}
+                    <input type="datetime-local" id="time" name="time" ref={dateInput} onChange={event => {setDate(event.target.value)}} required/>
+                </div>
+            </div>
             <div className={classes.delivery_type}>
                 <div className={classes.input}>
                     <label>Dostawa</label>
-                    <input type='checkbox' ref={deliveryInput} id='delivery' onChange={changeDeliveryHandler}/>
+                    <input type='checkbox' ref={deliveryInput} id='delivery' defaultChecked={enteredDelivery} onChange={changeDeliveryHandler}/>
                 </div>
                 <div className={classes.input}>
                     <label>Odbiór osobisty</label>
-                    <input type='checkbox' ref={selfPickUpInput} id='pick_up' onChange={changeDeliveryHandler}/>
+                    <input type='checkbox' ref={selfPickUpInput} id='pick_up' defaultChecked={enteredSelfPickUp} onChange={changeDeliveryHandler}/>
                 </div>
             </div>
             {enteredDelivery === true && deliveryForm()}

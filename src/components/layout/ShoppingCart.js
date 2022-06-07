@@ -38,8 +38,8 @@ const ShoppingCart = () => {
                     <h1>{item.name}</h1>
                     <div className={classes.amount}>
                         <h3>{item.amount + " szt"}</h3>
-                        <button className={classes.add} onClick={cartItemAddHandler.bind(null, item)}></button>
-                        <button className={classes.remove} onClick={cartItemRemoveHandler.bind(null, item.id, item.isByWeight)}></button>
+                        {Boolean(item.isCustomizable) === false && <button className={classes.add} onClick={cartItemAddHandler.bind(null, item)}></button>}
+                        {Boolean(item.isCustomizable) === false && <button className={classes.remove} onClick={cartItemRemoveHandler.bind(null, item.id, item.isByWeight)}></button>}
                     </div>
                     <h2>{price.toFixed(2) + " zł"}</h2>
                 </div>
@@ -56,8 +56,8 @@ const ShoppingCart = () => {
                 <h1>{item.name}</h1>
                 <div className={classes.amount}>
                     <h3>{item.amount.toFixed(2) + " kg"}</h3>
-                    <button className={classes.add} onClick={cartItemAddHandler.bind(null, item)}></button>
-                    <button className={classes.remove} onClick={cartItemRemoveHandler.bind(null, item.id, item.isByWeight)}></button>
+                    {Boolean(item.isCustomizable) === false && <button className={classes.add} onClick={cartItemAddHandler.bind(null, item)}></button>}
+                    {Boolean(item.isCustomizable) === false && <button className={classes.remove} onClick={cartItemRemoveHandler.bind(null, item.id, item.isByWeight)}></button>}
                 </div>
                 <h2>{price.toFixed(2) + " zł"}</h2>
             </div>

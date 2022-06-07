@@ -23,8 +23,12 @@
     display: flex;
 }
 
-.additions_box div, .additions_box h2{
+.additions_box div, .additions_box h2, .additions_box textarea{
     margin-left: 40px;
+}
+
+.additions_box textarea{
+    margin-top: 0;
 }
 
 .additions_box select{
@@ -52,6 +56,8 @@
 .additions_box select option:hover{
     background-color: rgb(245, 182, 240);
 }
+
+/* CAKE */
 
 .cake {
     position: relative;
@@ -104,4 +110,31 @@
     border-radius: 10px 30px 10px 11px;
     margin: 0 auto;
     border: 1px solid black;
+}
+
+/* BUTTON */
+
+.button{
+    display:block;
+    padding: 15px 25px 15px 25px;
+    font-family: Lato, sans-serif;
+    border: 1px solid rgb(139, 27, 83);
+    border-radius: 5px;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: 1rem;
+    color: rgb(139, 27, 83);
+    font-weight: bold;
+    margin: 30px auto 20px auto;
+}
+
+.button:hover{
+	color: rgb(139, 27, 83);
+	background-color: rgba(250, 167, 239, 0.2);
+}
+
+.button:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }

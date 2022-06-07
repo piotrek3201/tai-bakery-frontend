@@ -84,8 +84,8 @@ function App() {
         <Route path='/cart'>
           <CartPage />
         </Route>
-        <Route path='/create'>
-          <CreatePage />
+        <Route path='/create/:customCakeId/:categoryId'>
+          <CreatePage/>
         </Route>
         <Route path='/login'>
           <LoginPage />

@@ -3,6 +3,7 @@ import { Fragment, useContext } from 'react';
 import CartItems from './CartItems';
 import CartContext from "../../components/store/cart-context";
 import PersonalDataForm from './PersonalDataForm';
+import API_URL from '../../utilities/Constants';
 
 const CartPage = () => {
 
@@ -10,13 +11,53 @@ const CartPage = () => {
     const totalAmount = cartCtx.totalAmount.toFixed(2);
 
     async function onEnterPersonalData(data) {
-        data = {
+
+        const preparedItems = cartCtx.items.map((item) => {
+            if(item.customization){
+                return {
+                    productId: item.id,
+                    quantity: item.amount,
+                    customization: item.customization
+                }
+            } else {
+                return {
+                    productId: item.id,
+                    quantity: item.amount
+                }
+            }
+            
+        });
+
+        const order = {
             ...data,
-            orderValue: Number(totalAmount)
+            // orderValue: Number(totalAmount),
+            orderDetails: preparedItems
         }
-        console.log(data);
-        console.log(cartCtx.items);
+        onAddOrder(order);
+        // console.log(order);
     };
+
+    async function onAddOrder(order) {
+        try {
+          await addOrderHandler(order);
+        } catch (error) {
+          alert(error.message);
+        }
+      }
+
+    async function addOrderHandler(order) {
+        console.log(order);
+        const response = await fetch(`${API_URL}/orders/add`, {
+          method: 'POST',
+          body: JSON.stringify(order),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        if (!response.ok) {
+          throw new Error('Nie udało się dodać zamówienia.');
+        }
+    } 
 
     return <Fragment>
         <div className={classes.container}>

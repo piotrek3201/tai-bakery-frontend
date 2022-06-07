@@ -1,19 +1,94 @@
 import classes from './CreatePage.module.css';
-import { Fragment, useState, useEffect, useCallback } from "react";
+import { Fragment, useState, useEffect, useCallback, useContext, useRef } from "react";
 import AdditionList from './AdditionList';
 import CakeList from './CakeList';
 import FillingList from './FillingList';
 import GlazeList from './GlazeList';
 import SizeList from './SizeList';
 import API_URL from '../../utilities/Constants';
+import CartContext from '../../components/store/cart-context';
+import { useParams } from "react-router-dom";
 
-const CreatePage = () => {
+const CreatePage = props => {
 
-    // const link = 'https://localhost:7046/api/customization/';
+    const cartCtx = useContext(CartContext);
+    const params = useParams();
+    const customCakeId = Number(params.customCakeId);
+    const categoryId = params.categoryId;
+    const textInput = useRef();
 
     const [products, setProducts] = useState([]);
+    const [size, setSize] = useState({});
+    const [cake, setCake] = useState({});
+    const [filling, setFilling] = useState({});
+    const [glaze, setGlaze] = useState({});
+    const [addition, setAddition] = useState({});
+    const [text, setText] = useState(" ");
+    let customCake = {};
 
-    const fetchProducts = useCallback (async () => {
+    const link = `${API_URL}/products?categoryId=${categoryId}`;
+   
+    useEffect(() => {
+        const fetchProducts_ = async () => {
+            const response_ = await fetch(link);
+            const responseData = await response_.json();
+            // console.log(responseData);
+            setProducts(responseData);
+        }
+
+        fetchProducts_();
+    }, [params]);
+
+    const addItemToCartHandler = amount => {
+        cartCtx.addItem({
+          id: customCake.productId,
+          name: customCake.name,
+          amount: amount,
+          price: customCake.price,
+          isByWeight: customCake.isByWeight,
+          url: customCake.imageUrl,
+          isCustomizable: customCake.isCustomizable,
+          customization: {
+            sizeId: size.id,
+            glazeId: glaze.id,
+            fillingId: filling.id,
+            cakeId: cake.id,
+            additionId: addition.id,
+            text: text
+          }
+        });
+      };
+    
+    const submitHandler = event => {
+        event.preventDefault();
+
+        setText(textInput.current.value);
+
+        console.log(typeof products[0].productId + ", " + typeof customCakeId);
+        for(let i = 0; i < products.length; i++){
+            if(products[i].productId === customCakeId){
+                customCake = products[i];
+            }
+        }
+        addItemToCartHandler(1);
+        console.log(customCakeId);
+        console.log(categoryId);
+        console.log({
+            ...customCake, 
+            customization: {
+            sizeId: size.id,
+            glazeId: glaze.id,
+            fillingId: filling.id,
+            cakeId: cake.id,
+            additionId: addition.id,
+            text: text
+          }});
+        
+      };
+
+    const [additions, setAdditions] = useState([]);
+
+    const fetchAdditions = useCallback (async () => {
         let responseData = [];
         let response;
         let responseJson;
@@ -27,30 +102,24 @@ const CreatePage = () => {
             }
             
             console.log(responseData);
-            // console.log(products[1]);
-            setProducts(responseData);
+            // console.log(Additions[1]);
+            setAdditions(responseData);
         } catch (error) {
             console.log(error.message);
         }
     }, []);
 
     useEffect(() => {
-        fetchProducts();
-    }, [fetchProducts]);
-
-    const [size, setSize] = useState({});
-    const [cake, setCake] = useState({});
-    const [filling, setFilling] = useState({});
-    const [glaze, setGlaze] = useState({});
-    const [addition, setAddition] = useState({});
+        fetchAdditions();
+    }, [fetchAdditions]);
 
     const getSizes = size => {
         size = Number(size);
-        for(var i = 0; i < products[4].length; i++){
-            if(size === products[4][i].sizeId){
+        for(var i = 0; i < additions[4].length; i++){
+            if(size === additions[4][i].sizeId){
                 setSize({
                     id: size,
-                    diameter: products[4][i].diameter
+                    diameter: additions[4][i].diameter
                 })
             }
         }
@@ -58,12 +127,12 @@ const CreatePage = () => {
 
     const getCakes = cake => {
         cake = Number(cake);
-        for(var i = 0; i < products[1].length; i++){
-            if(cake === products[1][i].cakeId){
+        for(var i = 0; i < additions[1].length; i++){
+            if(cake === additions[1][i].cakeId){
                 setCake({
                     id: cake,
-                    name: products[1][i].cakeName,
-                    color: products[1][i].cakeColor
+                    name: additions[1][i].cakeName,
+                    color: additions[1][i].cakeColor
                 })
             }
         }
@@ -71,12 +140,12 @@ const CreatePage = () => {
 
     const getFillings = filling => {
         filling = Number(filling);
-        for(var i = 0; i < products[2].length; i++){
-            if(filling === products[2][i].fillingId){
+        for(var i = 0; i < additions[2].length; i++){
+            if(filling === additions[2][i].fillingId){
                 setFilling({
                     id: filling,
-                    name: products[2][i].fillingName,
-                    color: products[2][i].fillingColor
+                    name: additions[2][i].fillingName,
+                    color: additions[2][i].fillingColor
                 })
             }
         }
@@ -84,12 +153,12 @@ const CreatePage = () => {
 
     const getGlazes = glaze => {
         glaze = Number(glaze);
-        for(var i = 0; i < products[3].length; i++){
-            if(glaze === products[3][i].glazeId){
+        for(var i = 0; i < additions[3].length; i++){
+            if(glaze === additions[3][i].glazeId){
                 setGlaze({
                     id: glaze,
-                    name: products[3][i].glazeName,
-                    color: products[3][i].glazeColor
+                    name: additions[3][i].glazeName,
+                    color: additions[3][i].glazeColor
                 })
             }
         }
@@ -97,12 +166,12 @@ const CreatePage = () => {
 
     const getAdditions = addition => {
         addition = Number(addition);
-        for(var i = 0; i < products[0].length; i++){
-            if(addition === products[0][i].additionId){
+        for(var i = 0; i < additions[0].length; i++){
+            if(addition === additions[0][i].additionId){
                 setAddition({
                     id: addition,
-                    name: products[0][i].additionName,
-                    imageUrl: products[0][i].additionVisual
+                    name: additions[0][i].additionName,
+                    imageUrl: additions[0][i].additionVisual
                 })
             }
         }
@@ -121,16 +190,21 @@ const CreatePage = () => {
         </div>
         <div className={classes.additions_box}>
             <h2>Rozmiar (cm)</h2>
-            <SizeList items={products[4]} onChangeHandler={getSizes}/>
+            <SizeList items={additions[4]} onChangeHandler={getSizes}/>
             <h2>Ciasto</h2>
-            <CakeList items={products[1]} onChangeHandler={getCakes}/>
+            <CakeList items={additions[1]} onChangeHandler={getCakes}/>
             <h2>Nadzienie</h2>
-            <FillingList items={products[2]} onChangeHandler={getFillings}/>
+            <FillingList items={additions[2]} onChangeHandler={getFillings}/>
             <h2>Polewa</h2>
-            <GlazeList items={products[3]} onChangeHandler={getGlazes}/>
+            <GlazeList items={additions[3]} onChangeHandler={getGlazes}/>
             <h2>Dodatki</h2>
-            <AdditionList items={products[0]} onChangeHandler={getAdditions}/>
-            {/* <button className={classes.button} type='submit'>Zapisz</button> //Kiedyś będzie tu guzik */}
+            <AdditionList items={additions[0]} onChangeHandler={getAdditions}/>
+            <h2>Napis</h2>
+            <textarea type='text' id='text' ref={textInput} placeholder="Wpisz własny tekst..."> </textarea>
+            <form className={classes.container} onSubmit={submitHandler}>
+                <button className={classes.button}>Dodaj do koszyka</button>
+            </form>
+            
         </div>
     </div>;
 };

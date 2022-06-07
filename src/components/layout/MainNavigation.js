@@ -19,11 +19,12 @@ function MainNavigation(props) {
           <ul className={classes.list}>
             <Link to='/home'><img className={classes.logo} src={logo} alt='logo'/></Link>
             {props.userData != null && props.userData.role === 1 && (<li className={classes.list_item}><Link to='/admin'>Panel administratora</Link></li>)}
+            <li className={classes.list_item}><Link to='/about'>O Nas</Link></li>
+            <li className={classes.list_item}><Link to='/offer'>Oferta</Link></li>
             <li className={classes.list_item}>
               <Link to='/products'>Nasze produkty</Link>
               <CategoriesList categories={props.categories}/>
             </li>
-            <li className={classes.list_item}><Link to='/create'>Stwórz własny tort</Link></li>
             <li className={classes.list_item}><Link to='/contact'>Kontakt</Link></li>
             <li className={classes.list_item}>
               <Link to='/cart' className={classes.cart_btn}>Koszyk</Link>
