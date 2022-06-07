@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import API_URL from "../../utilities/Constants";
 
@@ -19,21 +19,23 @@ function LoginForm() {
       password: enteredPassword
     };
 
-    const response = await fetch(`${API_URL}/auth/login`, {
-      method: 'POST',
-      body: JSON.stringify(credentials),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include'
-    });
-    if (!response.ok) {
-      throw new Error('Nie udało się zalogować.');
+    try {
+      const response = await fetch(`${API_URL}/auth/login`, {
+        method: 'POST',
+        body: JSON.stringify(credentials),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+      });
+      if (!response.ok) {
+        throw new Error('Błędne dane logowania.');
+      }
+      history.replace('/');
+      window.location.reload();
+    } catch (ex) {
+      alert(ex.message);
     }
-    console.log(credentials);
-    console.log(response);
-    history.replace('/');
-    window.location.reload();
   }
 
   function cancelHandler(event) {

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import API_URL from "../../utilities/Constants";
 
@@ -16,23 +16,26 @@ function RegisterForm() {
     const enteredName = nameInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
-    const response = await fetch(`${API_URL}/auth/register`, {
-      method: 'POST',
-      body: JSON.stringify({
-        name: enteredName,
-        email: enteredEmail,
-        password: enteredPassword
-      }),
-      headers: {
-        'Content-Type': 'application/json'
+    try {
+      const response = await fetch(`${API_URL}/auth/register`, {
+        method: 'POST',
+        body: JSON.stringify({
+          name: enteredName,
+          email: enteredEmail,
+          password: enteredPassword
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Nie udało się zarejestrować konta.');
       }
-    });
-    if (!response.ok) {
-      throw new Error('Nie udało się zarejestrować konta.');
+      history.replace('/');
+      window.location.reload();
+    } catch (ex) {
+      alert(ex.message);
     }
-
-    history.replace('/');
-    window.location.reload();
   }
 
   function cancelHandler(event) {
