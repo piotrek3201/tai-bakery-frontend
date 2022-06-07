@@ -13,6 +13,7 @@ import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import API_URL from './utilities/Constants';
 import LogoutPage from './pages/LogoutPage';
+import NotAuthorizedPage from './pages/NotAuthorizedPage';
 
 function App() {
 
@@ -22,12 +23,9 @@ function App() {
       const fetchCategories_ = async () => {
           const response = await fetch(`${API_URL}/categories/all`);
           const responseCategories = await response.json();
-          // console.log(responseCategories);
           setCategories(responseCategories);
       }
-
       fetchCategories_();
-
   }, []);
 
   const [userAccount, setUserAccount] = useState(null);
@@ -47,7 +45,6 @@ function App() {
         setIsLogged(false);
       }
 
-      console.log(responseData);
       setUserAccount(responseData);
     }, []);
 
@@ -76,9 +73,14 @@ function App() {
         <Route path='/products/:categoryId'>
           <ProductsPage categories={categories}/>
         </Route>
-        {isLogged && (
+        {isLogged && userAccount.role === 1 && (
           <Route path='/admin'>
             <AdminPage />
+          </Route>
+        )}
+        {(!isLogged || userAccount.role !== 1) && (
+          <Route path='/admin'>
+            <NotAuthorizedPage />
           </Route>
         )}
         <Route path='/cart'>
