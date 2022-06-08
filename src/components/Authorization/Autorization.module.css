@@ -1,0 +1,57 @@
+.box{
+    margin: 0 auto;
+    text-align: center;
+    width: 35%;
+    background-color: white;
+    box-shadow: 0 0 5px 3px lightgray;
+    border-radius: 5px;
+    padding: 30px 10px;
+}
+
+.box h1{
+	font-size: 22px;
+}
+
+.button{
+    margin:0 auto 10px auto;
+    display:block;
+    padding: 15px 20px 15px 20px;
+    font-family: Lato, sans-serif;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: rgb(167, 109, 145);
+    font-weight: bold;
+}
+
+.buttons{
+    display: flex;
+}
+
+.button:hover{
+    color: rgb(139, 27, 83);
+    
+    background-color: rgba(250, 167, 239, 0.2);
+}
+
+.button:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.emailInput, .passwordInput, .nameInput{
+    display: grid;
+}
+
+.emailInput input[type=email], .passwordInput input[type=password], .nameInput input[type=text]{
+    margin: 10px auto 20px auto;
+    min-width: 50%;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid rgb(139, 27, 83);
+    resize: vertical;
+}

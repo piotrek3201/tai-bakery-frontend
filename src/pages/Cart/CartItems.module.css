@@ -1,7 +1,7 @@
 .remove{
 	background: url('../../components/layout/logo/remove.png');
-	height: 25px;
-	width: 25px;
+	height: 20px;
+	width: 20px;
 	border: none;
 	cursor: pointer;
     margin: 0 10px;
@@ -9,8 +9,8 @@
 
 .add{
 	background: url('../../components/layout/logo/add.png');
-	height: 25px;
-	width: 25px;
+	height: 20px;
+	width: 20px;
 	border: none;
 	cursor: pointer;
 	margin: 0 10px;
@@ -31,12 +31,12 @@
 .img_name{
     display: grid;
     place-items: center;
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .img_name img{
-    max-width: 230px;
-    max-height: 200px;
+    max-width: 200px;
+    max-height: 170px;
     margin-bottom: 10px;
     margin-left: 5px;
     border-radius: 5px;
@@ -44,18 +44,18 @@
 }
 
 .amount, .price{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .sum{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 }
 
 .remove_all{
 	background: url('../../components/layout/logo/cancel.png');
-	height: 30px;
-	width: 30px;
+	height: 25px;
+	width: 25px;
 	border: none;
 	cursor: pointer;
 }

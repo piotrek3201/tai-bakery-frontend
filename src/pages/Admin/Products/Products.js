@@ -12,7 +12,7 @@ const Products = props => {
             <td>{product.isByWeight ? "TAK" : "NIE"}</td>
             <td>{product.isCustomizable ? "TAK" : "NIE"}</td>
             <td>{product.price}</td>
-            <td><img src={product.imageUrl} alt={product.name} width='200' height='200' /></td>
+            <td className={classes.product_image} style={{background: `url(${product.imageUrl})`}}></td>
             <td>
               <button className={classes.button} onClick={() => props.onEditHandler(product)}>Edytuj</button>
             </td>

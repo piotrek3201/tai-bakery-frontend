@@ -54,7 +54,7 @@
     background-color: rgb(139, 27, 83);
 } */
 
-.container input[type=text], textarea{
+.container input[type=text], .container textarea{
     margin: 30px auto 20px auto;
     min-width: 380px;
     padding: 15px;

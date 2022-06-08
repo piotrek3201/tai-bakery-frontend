@@ -35,7 +35,9 @@ const ShoppingCart = () => {
                     <img src={item.url}></img>
                 </div>
                 <div className={classes.about}>
-                    <h1>{item.name}</h1>
+                    {Boolean(item.isCustomizable) === true &&<h1 style={{marginBottom: 0} }>{item.name}</h1>}
+                    {Boolean(item.isCustomizable) === false &&<h1>{item.name}</h1>}
+                    {Boolean(item.isCustomizable) === true && <p>{item.customization.diameter + " cm, " + item.customization.cakeName + ", " + item.customization.fillingName + ", " + item.customization.glazeName + ", " + item.customization.additionName}</p>}
                     <div className={classes.amount}>
                         <h3>{item.amount + " szt"}</h3>
                         {Boolean(item.isCustomizable) === false && <button className={classes.add} onClick={cartItemAddHandler.bind(null, item)}></button>}

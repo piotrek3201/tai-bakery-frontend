@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import API_URL from "../../utilities/Constants";
+import classes from "./Autorization.module.css";
 
 function RegisterForm() {
   const history = useHistory();
@@ -44,23 +45,25 @@ function RegisterForm() {
   }
 
   return (
-    <section>
+    <section className={classes.box}>
       <h1>Rejestracja</h1>
       <form onSubmit={submitHandler}>
-        <div>
+        <div className={classes.emailInput}>
           <label htmlFor="email">Adres e-mail</label>
           <input type="email" id="email" required ref={emailInputRef} />
         </div>
-        <div>
+        <div className={classes.nameInput}>
           <label htmlFor="name">Imię i nazwisko</label>
           <input type="text" id="name" required ref={nameInputRef} />
         </div>
-        <div>
+        <div className={classes.passwordInput}>
           <label htmlFor="password">Hasło</label>
           <input type="password" id="password" required ref={passwordInputRef} />
         </div>
-        <button onSubmit={submitHandler}>Zarejestruj</button>
-        <button onClick={cancelHandler}>Anuluj</button>
+        <div className={classes.buttons}>
+          <button className={classes.button} onSubmit={submitHandler}>Zarejestruj</button>
+          <button className={classes.button} onClick={cancelHandler}>Anuluj</button>
+        </div>
       </form>
     </section>
   );

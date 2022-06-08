@@ -1,5 +1,4 @@
 import { Fragment, useState, useEffect } from "react";
-import classes from './ProductsPage.module.css';
 import ProductsList from "../components/UI/ProductsList";
 import { useParams } from "react-router-dom";
 import API_URL from "../utilities/Constants";

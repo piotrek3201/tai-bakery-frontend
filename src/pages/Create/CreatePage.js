@@ -54,7 +54,12 @@ const CreatePage = props => {
             fillingId: filling.id,
             cakeId: cake.id,
             additionId: addition.id,
-            text: text
+            text: text,
+            diameter: size.diameter,
+            glazeName: glaze.name,
+            fillingName: filling.name,
+            cakeName: cake.name,
+            additionName: addition.name
           }
         });
       };
@@ -200,7 +205,9 @@ const CreatePage = props => {
             <h2>Dodatki</h2>
             <AdditionList items={additions[0]} onChangeHandler={getAdditions}/>
             <h2>Napis</h2>
-            <textarea type='text' id='text' ref={textInput} placeholder="Wpisz własny tekst..."> </textarea>
+            <div className={classes.text}>
+                <textarea type='text' id='text' ref={textInput} placeholder="Wpisz własny tekst..."> </textarea>
+            </div>
             <form className={classes.container} onSubmit={submitHandler}>
                 <button className={classes.button}>Dodaj do koszyka</button>
             </form>

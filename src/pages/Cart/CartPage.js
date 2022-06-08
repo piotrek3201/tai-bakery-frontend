@@ -10,6 +10,12 @@ const CartPage = () => {
     const cartCtx = useContext(CartContext);
     const totalAmount = cartCtx.totalAmount.toFixed(2);
 
+    const cartItemRemoveWholeHandler = () => {
+        for(let i = 0; i < cartCtx.items.length; i++){
+            cartCtx.removeWholeItem(cartCtx.items[i].id);
+        }
+    }
+
     async function onEnterPersonalData(data) {
 
         const preparedItems = cartCtx.items.map((item) => {
@@ -17,7 +23,7 @@ const CartPage = () => {
                 return {
                     productId: item.id,
                     quantity: item.amount,
-                    customization: item.customization
+                    customization: item.customization.slice('sizeId', 'glazeId', 'fillingId', 'cakeId', 'additionId', 'text')
                 }
             } else {
                 return {
@@ -40,6 +46,7 @@ const CartPage = () => {
     async function onAddOrder(order) {
         try {
           await addOrderHandler(order);
+          cartItemRemoveWholeHandler();
         } catch (error) {
           alert(error.message);
         }

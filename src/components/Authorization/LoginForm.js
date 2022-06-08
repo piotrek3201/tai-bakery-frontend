@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import API_URL from "../../utilities/Constants";
+import classes from "./Autorization.module.css";
 
 function LoginForm() {
   const history = useHistory();
@@ -44,19 +45,21 @@ function LoginForm() {
   }
 
   return (
-    <section>
+    <section className={classes.box}>
       <h1>Logowanie</h1>
       <form onSubmit={submitHandler}>
-        <div>
+        <div className={classes.emailInput}>
           <label htmlFor="email">Adres e-mail</label>
           <input type="email" id="email" required ref={emailInputRef} />
         </div>
-        <div>
+        <div className={classes.passwordInput}>
           <label htmlFor="password">Hasło</label>
           <input type="password" id="password" required ref={passwordInputRef} />
         </div>
-        <button onSubmit={submitHandler}>Zaloguj</button>
-        <button onClick={cancelHandler}>Anuluj</button>
+        <div className={classes.buttons}>
+          <button className={classes.button} onSubmit={submitHandler}>Zaloguj</button>
+          <button className={classes.button} onClick={cancelHandler}>Anuluj</button>
+        </div>
       </form>
     </section>
   );

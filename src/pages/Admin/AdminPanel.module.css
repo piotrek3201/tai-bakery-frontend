@@ -11,16 +11,15 @@
 }
 
 .admin_list a{
-    font-size: 20px;
+    font-size: 18px;
     color: rgb(199, 144, 182);
     text-decoration: none;
     font-family: Lato, sans-serif;
-    padding: 22px 0px;
     margin: 10px 20px 10px 20px;
     position: relative;
     display: block;
     text-align: center;
-    padding: 15px 25px;
+    padding: 15px 20px;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 5px;

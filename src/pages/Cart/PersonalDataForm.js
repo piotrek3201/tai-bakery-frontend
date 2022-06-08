@@ -32,6 +32,14 @@ const PersonalDataForm = props => {
             selfPickUpInput.current.checked = false;
         }
 
+        if(enteredSelfPickUp === true && selfPickUpInput.current.checked === true){
+            deliveryInput.current.checked = true;
+            setDelivery(true);
+            selfPickUpInput.current.checked = false;
+            setSelfPickUp(false);
+            
+        }
+
         // setDelivery(deliveryInput.current.checked);
         // setSelfPickUp(selfPickUpInput.current.checked);
     }

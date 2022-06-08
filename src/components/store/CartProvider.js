@@ -1,12 +1,20 @@
-import { useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import CartContext from "./cart-context";
 
 const defaultCartState = {
-    items: [],
-    totalAmount: 0
+    items: JSON.parse(localStorage.getItem("items")) || [],
+    totalAmount: JSON.parse(localStorage.getItem("totalAmount")) || 0
 };
 
 const cartReducer = (state, action) => {
+
+    // useEffect(() => {
+    //     const items = JSON.parse(localStorage.getItem('items'));
+    //     if(items){
+    //         setitems(items);
+    //     }
+    // }, []);
+
     if(action.type === 'ADD'){
         
         const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
@@ -18,7 +26,7 @@ const cartReducer = (state, action) => {
 
         let updatedItems;
 
-        if(existingCartItem){
+        if(existingCartItem && action.item.isCustomizable !== true){
             const updatedItem = {
                 ...existingCartItem,
                 amount: existingCartItem.amount + action.item.amount
@@ -97,9 +105,16 @@ const cartReducer = (state, action) => {
     }
 
     if(action.type === 'REMOVE_ONE'){
+        let existingCartItemIndex;
 
-        const existingCartItemIndex = state.items.findIndex(
-            item => item.id === action.id);
+        if(state.items.isCustomizable === false){
+            existingCartItemIndex = state.items.findIndex(
+                item => item.id === action.id);
+        } else {
+            existingCartItemIndex = state.items.findIndex(
+                item => item.id === action.id && item.customization.sizeId === action.customization.sizeId && item.customization.additionId === action.customization.additionId && item.customization.cakeId === action.customization.cakeId && item.customization.glazeId === action.customization.glazeId && item.customization.fillingId === action.customization.fillingId && item.customization.text === action.customization.text);
+        }
+        
 
         const existingCartItem = state.items[existingCartItemIndex];
 
@@ -136,6 +151,19 @@ const cartReducer = (state, action) => {
 
 const CardProvider = props => {
     const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
+
+    useEffect(() => {
+        console.log(cartState.items);
+        if(cartState.items.length !== 0)
+        localStorage.setItem('items', JSON.stringify(cartState.items));
+    }, [cartState.items]);
+
+    useEffect(() => {
+        console.log(cartState.totalAmount);
+        if(cartState.totalAmount !== 0)
+        localStorage.setItem('totalAmount', JSON.stringify(cartState.totalAmount));
+    }, [cartState.totalAmount]);
+
 
     const addItemToCartHandler = item =>{
         dispatchCartAction({type: 'ADD', item: item});

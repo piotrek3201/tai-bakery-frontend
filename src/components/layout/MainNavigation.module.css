@@ -16,7 +16,8 @@
 	display: flex; /* horizontal*/
 	justify-content: center; /*CENTER NAVBAR*/
 	align-items: center; /*center*/
-	padding: 25px 0 25px 0;
+	padding: 10px 0 10px 0;
+	font-size: 13px;
 }
 
 .cart_btn{
@@ -101,7 +102,7 @@
 
 .drop{
     position: absolute;
-    top: 135px;
+    top: 110px;
     box-shadow: 0 0 10px gray;
     background-color: white;
     flex-direction: column-reverse;
@@ -143,13 +144,13 @@
 }
 
 .cart{
-    min-width: 400px;
+    min-width: 350px;
     background-color: rgba(250, 250, 250, 0.996);
     border-radius: 3px;
     box-shadow: 0 0 5px 3px gray;
     justify-items: center;
 	position: absolute;
-    top: 137px;
+    top: 120px;
     opacity: 0.95;
 	display: none;
 	z-index: 2;
@@ -175,25 +176,29 @@ hr{
 
 .total h2{
 	margin: 0 auto;
-	font-size: 25px;
+	font-size: 20px;
 }
 
 .total h3{
 	margin: 0 auto;
-	font-size: 25px;
+	font-size: 20px;
+}
+
+.title h1{
+	font-size: 20px;
 }
 
 .button{
    	margin:0 auto 10px auto;
 	display:block;
-    padding: 15px 25px 15px 25px;
+    padding: 15px 20px 15px 20px;
 	font-family: Lato, sans-serif;
 	border: 1px solid lightgray;
 	border-radius: 5px;
 	background-color: transparent;
 	color: inherit;
 	cursor: pointer;
-	font-size: 1rem;
+	font-size: 0.9rem;
 	color: rgb(167, 109, 145);
 	font-weight: bold;
 }
@@ -219,9 +224,11 @@ hr{
 }
 
 .image_box img{
-	width: 150px;
-	height: 120px;
+	width: 120px;
+	height: 100px;
 	border-radius: 7px;
+	transform: translate(-6px, -3px);
+	box-shadow: 8px 8px 11px -6px rgba(165, 165, 165, 1);
 }
 
 .about{
@@ -229,21 +236,28 @@ hr{
 	display: inline-block;
 }
 .about h1{
-	font-size: 26px;
+	font-size: 20px;
 	color: #202020;
 	margin-top: 0px;
 }
 .about h3{
-	font-size: 20px;
+	font-size: 16px;
 	color: #909090;
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
 
 .about h2{
-	font-size: 22px;
+	font-size: 18px;
 	color: #202020;
 	margin-bottom: 0px;
+}
+
+.about p{
+	margin-top: 0;
+	font-size: 10px;
+	color: #be96b1;
+	margin-left: 5px;
 }
 
 .price{
@@ -260,8 +274,8 @@ hr{
 
 .remove_all{
 	background: url('./logo/cancel.png');
-	height: 30px;
-	width: 30px;
+	height: 25px;
+	width: 25px;
 	border: none;
 	cursor: pointer;
 }
@@ -278,16 +292,16 @@ hr{
 
 .remove{
 	background: url('./logo/remove.png');
-	height: 25px;
-	width: 25px;
+	height: 20px;
+	width: 20px;
 	border: none;
 	cursor: pointer;
 }
 
 .add{
 	background: url('./logo/add.png');
-	height: 25px;
-	width: 25px;
+	height: 20px;
+	width: 20px;
 	border: none;
 	cursor: pointer;
 	margin: 0px 7px;
@@ -314,7 +328,7 @@ hr{
 	float: right;
 	padding: 3px 7px;
 	margin-top: -5px;
-	font-size: 15px;
+	font-size: 12px;
 	margin-left: -8px;
 	position:relative;
 	z-index: 1;

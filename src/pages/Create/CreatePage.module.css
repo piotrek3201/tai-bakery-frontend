@@ -19,23 +19,34 @@
     font-family: Lato, sans-serif;
 }
 
+.addition_box form, .text{
+    width: 100%;
+}
+
 .container{
     display: flex;
 }
 
 .additions_box div, .additions_box h2, .additions_box textarea{
     margin-left: 40px;
+    font-size: 20px;
 }
 
 .additions_box textarea{
-    margin-top: 0;
+    margin-left: 0;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid rgb(139, 27, 83);
+    resize: vertical;
+    width: 46%;
 }
 
 .additions_box select{
     background-color: rgb(253, 253, 253);
-    width: 415px;
-    padding: 15px 20px;
-    font-size: 20px;
+    width: 55%;
+    padding: 15px 15px;
+    font-size: 16px;
     border-radius: 5px;
     border: 1px solid rgb(139, 27, 83);
     resize: vertical;
@@ -116,14 +127,14 @@
 
 .button{
     display:block;
-    padding: 15px 25px 15px 25px;
+    padding: 15px 20px 15px 20px;
     font-family: Lato, sans-serif;
     border: 1px solid rgb(139, 27, 83);
     border-radius: 5px;
     background-color: transparent;
     color: inherit;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: rgb(139, 27, 83);
     font-weight: bold;
     margin: 30px auto 20px auto;
