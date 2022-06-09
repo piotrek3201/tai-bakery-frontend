@@ -69,13 +69,15 @@ const CreatePage = props => {
 
         setText(textInput.current.value);
 
-        console.log(typeof products[0].productId + ", " + typeof customCakeId);
+        // console.log(typeof products[0].productId + ", " + typeof customCakeId);
         for(let i = 0; i < products.length; i++){
             if(products[i].productId === customCakeId){
                 customCake = products[i];
             }
         }
-        addItemToCartHandler(1);
+        if(addition.id !== undefined && glaze.id !== undefined && filling.id !== undefined && cake.id !== undefined && size.id !== undefined)
+            addItemToCartHandler(1);
+            
         console.log(customCakeId);
         console.log(categoryId);
         console.log({

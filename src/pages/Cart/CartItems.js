@@ -26,9 +26,8 @@ const CartItems = () => {
 
         if(item.isByWeight === false){
             return <tr key={uuidv4()}>
-                <td className={classes.img_name}>
-                    <img src={item.url}></img>
-                    {item.name}
+                <td className={classes.img_name} style={{background: `url(${item.url})`}}>
+                    {<h2>{item.name}</h2>}
                 </td>
                 <td className={classes.price}>
                     {item.price.toFixed(2) + " zł"}
@@ -47,22 +46,24 @@ const CartItems = () => {
             </tr>
         } else {
             return <tr key={uuidv4()}>
-                <td className={classes.img_name}>
-                    <img src={item.url}></img>
-                    {item.name}
+                <td className={classes.img_name} style={{background: `url(${item.url})`}}>
+                <button className={classes.remove_all} onClick={cartItemRemoveWholeHandler.bind(null, item.id)}></button>
+                    {<h2>{item.name}</h2>}
                 </td>
                 <td className={classes.price}>
                     {item.price.toFixed(2) + " zł"}
                 </td>
-                <td className={classes.amount}>
-                    <button className={classes.remove} onClick={cartItemRemoveHandler.bind(null, item.id, item.isByWeight)}></button>
-                    {item.amount.toFixed(2) + " kg"}
-                    <button className={classes.add} onClick={cartItemAddHandler.bind(null, item)}></button>
+                <td>
+                    <div className={classes.amount}>
+                        <button className={classes.remove} onClick={cartItemRemoveHandler.bind(null, item.id, item.isByWeight)}></button>
+                        {item.amount.toFixed(2) + " kg"}
+                        <button className={classes.add} onClick={cartItemAddHandler.bind(null, item)}></button>
+                    </div>
                 </td>
                 <td className={classes.sum}>
                     {sum.toFixed(2) + ' zł'}
                 </td>
-                <td>
+                <td className={classes.remove_btn}>
                     <button className={classes.remove_all} onClick={cartItemRemoveWholeHandler.bind(null, item.id)}></button>
                 </td>
             </tr>

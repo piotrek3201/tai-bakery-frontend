@@ -39,12 +39,12 @@
     border-radius: 5px;
     border: 1px solid rgb(139, 27, 83);
     resize: vertical;
-    width: 46%;
+    min-width: 46%;
 }
 
 .additions_box select{
     background-color: rgb(253, 253, 253);
-    width: 55%;
+    min-width: 55%;
     padding: 15px 15px;
     font-size: 16px;
     border-radius: 5px;
@@ -148,4 +148,42 @@
 .button:active{
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 800px){
+    .container{
+        display: grid;
+    }
+
+    .product_box{
+        width: 100%;
+        box-shadow: 3px 8px 31px 1px rgb(109, 109, 109);
+    }
+    
+    .additions_box{
+        width: 100%;
+        box-shadow: 3px 8px 31px 1px rgb(109, 109, 109);
+        z-index: 1;
+        margin: 0;
+        padding: 0;
+    }
+
+    .addition_box form, .text{
+        display: inline-block;
+    }
+
+    
+    .additions_box div, .additions_box h2, .additions_box textarea{
+        margin-left: auto;
+        text-align: center;
+    }
+
+    .addition_box select{
+        width: 55%;
+    }
+    
+    .additions_box textarea{
+        width: 50%;
+    }
+
 }

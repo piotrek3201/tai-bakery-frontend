@@ -107,15 +107,9 @@ const cartReducer = (state, action) => {
     if(action.type === 'REMOVE_ONE'){
         let existingCartItemIndex;
 
-        if(state.items.isCustomizable === false){
-            existingCartItemIndex = state.items.findIndex(
-                item => item.id === action.id);
-        } else {
-            existingCartItemIndex = state.items.findIndex(
-                item => item.id === action.id && item.customization.sizeId === action.customization.sizeId && item.customization.additionId === action.customization.additionId && item.customization.cakeId === action.customization.cakeId && item.customization.glazeId === action.customization.glazeId && item.customization.fillingId === action.customization.fillingId && item.customization.text === action.customization.text);
-        }
+        existingCartItemIndex = state.items.findIndex(
+            item => item.id === action.id);
         
-
         const existingCartItem = state.items[existingCartItemIndex];
 
         let updatedTotalAmount;

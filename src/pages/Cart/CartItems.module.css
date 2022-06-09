@@ -32,15 +32,31 @@
     display: grid;
     place-items: center;
     font-size: 18px;
-}
-
-.img_name img{
-    max-width: 200px;
-    max-height: 170px;
-    margin-bottom: 10px;
+	min-width: 180px;
+	min-height: 150px;
+	background-size: cover !important; 
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+	margin-bottom: 10px;
     margin-left: 5px;
     border-radius: 5px;
     box-shadow: 5px 8px 15px -3px rgba(109, 109, 109, 0.267);
+	position: relative;
+}
+
+.img_name h2{
+	font-size: 18px;
+	background-color: rgba(255, 255, 255, 0.61);
+	padding: 5px;
+	border-radius: 3px;
+}
+
+.img_name .remove_all{
+	display: none;
+	position: absolute;
+	top: 0px;
+    right: 0px;
+	background-color: rgba(255, 255, 255, 0.61);
 }
 
 .amount, .price{
@@ -52,7 +68,7 @@
     font-weight: bold;
 }
 
-.remove_all{
+.remove_btn button, .remove_all{
 	background: url('../../components/layout/logo/cancel.png');
 	height: 25px;
 	width: 25px;
@@ -60,8 +76,47 @@
 	cursor: pointer;
 }
 
-.remove_all:hover{
+.remove_btn button:hover, .remove_all button:hover{
 	color: rgb(139, 27, 83);
 	
 	background-color: rgba(250, 167, 239, 0.2);
+}
+
+@media screen and (max-width: 1380px){
+	.amount{
+		display: grid;
+		height: 100%;
+	}
+
+	.remove{
+		margin-bottom: 10px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.add{
+		margin-top: 10px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	table, thead, tbody, td, tr { 
+		display: block; 
+	}
+
+	th {
+		visibility:hidden;
+	}
+	.img_name{
+		margin-left: 0;
+	}
+
+	.img_name .remove_all{
+		display: block;
+	}
+
+	.remove_btn{
+		display: none;
+	}
+
 }

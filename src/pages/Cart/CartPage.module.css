@@ -3,7 +3,7 @@
 }
 
 .item_box{
-    height: 100vh;
+    min-height: 100vh;
     width: 65%;
     background-color: white;
     box-shadow: 3px 8px 31px 1px rgb(109, 109, 109);
@@ -12,7 +12,7 @@
 }
 
 .total_box{
-    height: 100vh;
+    min-height: 100vh;
     width: 35%;
     background-color: rgb(206, 179, 202);
     box-shadow: 5px 8px 15px -3px rgba(109, 109, 109, 0.267);
@@ -33,30 +33,6 @@
     border-spacing: 50px 0;
     overflow-x: auto;
 }
-
-/* @media screen and (max-width: 1000px) {
-
-    .items tr {
-        border-bottom: 3px solid #ddd;
-        display: block;
-    }
-      
-    .items td {
-        border-bottom: 1px solid #ddd;
-        display: block;
-        text-align: right;
-    }
-
-    .items td::before {
-        float: left;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-
-    .items th{
-        display: none;
-    }
-} */
 
 .items td, .items th {
     border-bottom: 1px solid #ddd;
@@ -173,3 +149,49 @@
     font-size: 14px;
 }
 
+@media screen and (max-width: 1120px){
+    .name, .full_address, .address, .contact, .delivery_type, .date{
+        display: grid;
+    }
+
+    .address input[type=text]{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .container{
+        display: grid;
+    }
+
+    .item_box{
+        min-height: 100vh;
+        width: 100%;
+        box-shadow: 3px 8px 31px 1px rgb(109, 109, 109);
+    }
+    
+    .total_box{
+        min-height: 100vh;
+        width: 100%;
+        box-shadow: 3px 8px 31px 1px rgb(109, 109, 109);
+        z-index: 1;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form{
+        display: inline-block;
+        width: 80%;
+        margin-right: 0;
+    }
+
+    .form .input{
+        width: 100%;
+    }
+
+
+    .input input[type=text], .input input[type=email], .input input[type=phone], .input input[type=datetime-local]{
+        width: 90%;
+    }
+
+}

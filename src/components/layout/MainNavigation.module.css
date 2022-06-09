@@ -1,3 +1,9 @@
+:root {
+	--paddingRightLeftMenuItem: 25px;
+	--cartWidth: 20vh;
+	--dropTop: 110px;
+  }
+
 .nav{
 	width: 100%;
 	background-color: white;
@@ -29,7 +35,7 @@
 	margin-top: 0px;
 }
 
-@media (max-width: 1040px){
+@media (max-width: 1140px){
 	.list{
 		display: grid;
 	}
@@ -44,6 +50,14 @@
 
 	.drop{
 		top: 290px !important;
+	}
+
+	.list_item:hover .cart{
+		display: none !important;
+	}
+
+	.list_item:hover .drop{
+		display: none !important;
 	}
 
 	.cart_btn{
@@ -81,7 +95,7 @@
 }
 
 .list_item{
-	padding: 10px 25px 10px 25px;
+	padding: 10px var(--paddingRightLeftMenuItem) 10px var(--paddingRightLeftMenuItem);
 	border-radius: 5px;	
 }
 
@@ -102,7 +116,7 @@
 
 .drop{
     position: absolute;
-    top: 110px;
+    top: var(--dropTop);
     box-shadow: 0 0 10px gray;
     background-color: white;
     flex-direction: column-reverse;
@@ -113,6 +127,9 @@
 	padding-inline-start: 0;
 	border-radius: 3px;
 	z-index: 2;
+	
+	margin-left: -12.5px;
+	
 }
 
 
@@ -144,17 +161,17 @@
 }
 
 .cart{
-    min-width: 350px;
+    min-width: var(--cartWidth);
     background-color: rgba(250, 250, 250, 0.996);
     border-radius: 3px;
     box-shadow: 0 0 5px 3px gray;
     justify-items: center;
 	position: absolute;
-    top: 120px;
+    top:var(--dropTop);
     opacity: 0.95;
 	display: none;
 	z-index: 2;
-	margin-left: -170px; /* poprawić to, bo tak być nie może (tak samo w kategoriach) */
+	margin-left: calc(-1 * ((var(--cartWidth)/2) - var(--paddingRightLeftMenuItem) + 40px)) /* poprawić to, bo tak być nie może (tak samo w kategoriach) */
 }
 
 .title{

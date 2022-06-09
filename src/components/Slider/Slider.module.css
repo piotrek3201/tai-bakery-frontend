@@ -19,10 +19,11 @@
     opacity: 0;
     transition: opacity ease-in-out 0.5s;
   }
-  .slide img {
-    width: 1000px;
-    /* height: 1000px; */
-    object-fit: cover;
+
+  @media (max-width: 800px){
+      .container_slider{
+        height: 0;
+      }
   }
 
   .active_anim {
