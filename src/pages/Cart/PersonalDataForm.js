@@ -49,10 +49,10 @@ const PersonalDataForm = props => {
 
         let enteredName = "string";
         let enteredLastName = "string";
-        let enteredAddress = "string";
+        let enteredAddress = "";
         let enteredPhone = "string";
-        let enteredCity = "string";
-        let enteredPostcode = "string";
+        let enteredCity = "";
+        let enteredPostcode = "";
         let enteredEmail = "string";
 
         if(enteredDelivery === false){
@@ -81,6 +81,7 @@ const PersonalDataForm = props => {
             selfPickUp: enteredSelfPickUp,
             deliveryDate: enteredDate
         });
+
     };
 
     const deliveryForm = () => {

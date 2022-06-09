@@ -148,16 +148,13 @@ const CardProvider = props => {
 
     useEffect(() => {
         console.log(cartState.items);
-        if(cartState.items.length !== 0)
         localStorage.setItem('items', JSON.stringify(cartState.items));
     }, [cartState.items]);
 
     useEffect(() => {
         console.log(cartState.totalAmount);
-        if(cartState.totalAmount !== 0)
         localStorage.setItem('totalAmount', JSON.stringify(cartState.totalAmount));
     }, [cartState.totalAmount]);
-
 
     const addItemToCartHandler = item =>{
         dispatchCartAction({type: 'ADD', item: item});

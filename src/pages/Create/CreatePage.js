@@ -75,8 +75,11 @@ const CreatePage = props => {
                 customCake = products[i];
             }
         }
-        if(addition.id !== undefined && glaze.id !== undefined && filling.id !== undefined && cake.id !== undefined && size.id !== undefined)
+        if(addition.id !== undefined && glaze.id !== undefined && filling.id !== undefined && cake.id !== undefined && size.id !== undefined){
             addItemToCartHandler(1);
+        } else {
+            alert("Nie można dodać do koszyka. Należy wybrać wszystkie opcje.");
+        }
             
         console.log(customCakeId);
         console.log(categoryId);

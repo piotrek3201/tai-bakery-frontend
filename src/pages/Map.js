@@ -25,6 +25,8 @@ export default function BakeryMap() {
 
     const [map, setMap] = React.useState(null);
 
+    const zoom = 10;
+
     const containerStyle = {
         width: '100%',
         height: '600px',
@@ -39,7 +41,7 @@ export default function BakeryMap() {
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: "AIzaSyAPiYdkNKFdX353KgPQ1QkBlvx-Q_CzZYk"
+        googleMapsApiKey: "AIzaSyAcUgiAjTCSuuB7CREm4RFZjPK85p0E5d4"
     })
 
     return isLoaded ? <Fragment>
@@ -47,7 +49,7 @@ export default function BakeryMap() {
         <h2 className={classes.title}>Cukiernia "Słodzianki"</h2>
         <p className={classes.description}>ul. gen. Sylwestra Kaliskiego 2<br />00-908 Warszawa</p>
         <div className={classes.map}>
-            <GoogleMap center={center} zoom={12} mapContainerStyle={containerStyle} onLoad={onLoad}>
+            <GoogleMap center={center} zoom={zoom} mapContainerStyle={containerStyle} onLoad={onLoad}>
                 <Marker position={center}/>
             </GoogleMap>
         </div>

@@ -99,16 +99,30 @@
   color: rgb(167, 109, 145);
 }
 
+.container .btn_custom{
+  font-family: Lato, sans-serif;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background-color: transparent;
+  font-weight: bold;
+  width: 80%;
+  padding: 0.7rem;
+  cursor: pointer;
+  margin: auto;
+  font-size: 0.9rem;
+  color: rgb(167, 109, 145);
+}
+
 .container a{
   text-decoration: none;
 }
 
-.btn:active{
+.btn:active, .btn_custom:active{
   transform: translateY(-1px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.btn:hover{
+.btn:hover, .btn_custom:hover{
   color: rgb(139, 27, 83);
   
   background-color: rgba(250, 167, 239, 0.2);

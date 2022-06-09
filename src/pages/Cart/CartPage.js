@@ -46,7 +46,7 @@ const CartPage = () => {
     async function onAddOrder(order) {
         try {
           await addOrderHandler(order);
-          cartItemRemoveWholeHandler();
+          await cartItemRemoveWholeHandler();
         } catch (error) {
           alert(error.message);
         }

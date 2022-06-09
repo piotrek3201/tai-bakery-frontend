@@ -1,6 +1,6 @@
 :root {
 	--paddingRightLeftMenuItem: 25px;
-	--cartWidth: 20vh;
+	--cartWidth: 35vh;
 	--dropTop: 110px;
   }
 
@@ -171,7 +171,7 @@
     opacity: 0.95;
 	display: none;
 	z-index: 2;
-	margin-left: calc(-1 * ((var(--cartWidth)/2) - var(--paddingRightLeftMenuItem) + 40px)) /* poprawić to, bo tak być nie może (tak samo w kategoriach) */
+	/* margin-left: calc(-1 * ((var(--cartWidth)/2) - var(--paddingRightLeftMenuItem) + 40px)); */
 }
 
 .title{

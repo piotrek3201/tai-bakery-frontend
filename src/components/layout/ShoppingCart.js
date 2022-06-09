@@ -1,4 +1,4 @@
-import React, {Fragment, useContext} from 'react';
+import React, {Fragment, useContext, useRef, useState, useLayoutEffect} from 'react';
 import classes from './MainNavigation.module.css';
 import CartContext from '../store/cart-context';
 import { Route, Switch, Redirect } from 'react-router-dom';
@@ -24,6 +24,7 @@ const ShoppingCart = () => {
     }
 
     // <li>{item.name + " " + item.amount}</li>
+    // var width = document.getElementById('cart').offsetWidth;
 
     const cart_items = cartCtx.items.map((item) => {
 
@@ -69,8 +70,17 @@ const ShoppingCart = () => {
         </div>; 
         }
     })
+
+    const [width, setWidth] = useState(0);
+    const myCart = useRef(null);
+
+    useLayoutEffect(() => {
+        setWidth(myCart.current.offsetWidth);
+        console.log(myCart.current.offsetWidth);
+    }, []);
+
     return <Fragment>
-      <div className={classes.cart}>
+      <div ref={myCart} className={classes.cart} style={{marginLeft: `calc(-1 * ((${width}/2) - 25px + 40px))`}}>
         <div className={classes.title}>
             <h1>Koszyk</h1>
         </div>
