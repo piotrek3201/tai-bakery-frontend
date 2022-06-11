@@ -8,6 +8,7 @@ function RegisterForm() {
 
   const emailInputRef = useRef();
   const passwordInputRef= useRef();
+  const password2InputRef= useRef();
   const nameInputRef = useRef();
 
   async function submitHandler(event) {
@@ -16,6 +17,11 @@ function RegisterForm() {
     const enteredEmail = emailInputRef.current.value;
     const enteredName = nameInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
+    const enteredPassword2 = password2InputRef.current.value;
+    if (enteredPassword !== enteredPassword2) {
+      alert("Hasło musi być identyczne.");
+      return;
+    }
 
     try {
       const response = await fetch(`${API_URL}/auth/register`, {
@@ -59,6 +65,10 @@ function RegisterForm() {
         <div className={classes.passwordInput}>
           <label htmlFor="password">Hasło</label>
           <input type="password" id="password" required ref={passwordInputRef} />
+        </div>
+        <div className={classes.passwordInput}>
+          <label htmlFor="password2">Powtórz hasło</label>
+          <input type="password" id="password2" required ref={password2InputRef} />
         </div>
         <div className={classes.buttons}>
           <button className={classes.button} onSubmit={submitHandler}>Zarejestruj</button>

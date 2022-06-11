@@ -8,8 +8,11 @@ import SizeList from './SizeList';
 import API_URL from '../../utilities/Constants';
 import CartContext from '../../components/store/cart-context';
 import { useParams } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const CreatePage = props => {
+    const history = useHistory();
 
     const cartCtx = useContext(CartContext);
     const params = useParams();
@@ -77,6 +80,7 @@ const CreatePage = props => {
         }
         if(addition.id !== undefined && glaze.id !== undefined && filling.id !== undefined && cake.id !== undefined && size.id !== undefined){
             addItemToCartHandler(1);
+            history.replace('/cart');
         } else {
             alert("Nie można dodać do koszyka. Należy wybrać wszystkie opcje.");
         }
@@ -93,7 +97,6 @@ const CreatePage = props => {
             additionId: addition.id,
             text: text
           }});
-        
       };
 
     const [additions, setAdditions] = useState([]);
