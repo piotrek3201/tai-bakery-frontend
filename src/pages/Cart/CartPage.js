@@ -1,14 +1,19 @@
 import classes from './CartPage.module.css';
-import { Fragment, useContext } from 'react';
+import { Fragment, useContext, useState } from 'react';
 import CartItems from './CartItems';
 import CartContext from "../../components/store/cart-context";
 import PersonalDataForm from './PersonalDataForm';
 import API_URL from '../../utilities/Constants';
+import Payment from './Payment';
 
 const CartPage = () => {
 
     const cartCtx = useContext(CartContext);
     const totalAmount = cartCtx.totalAmount.toFixed(2);
+
+    const [showPaymentOptions, setShowPaymentOptions] = useState(false);
+    const [orderData, setOrderData] = useState(null);
+    const [showSuccess, setShowSuccess] = useState(false);
 
     const cartItemRemoveWholeHandler = () => {
         for(let i = 0; i < cartCtx.items.length; i++){
@@ -16,8 +21,18 @@ const CartPage = () => {
         }
     }
 
-    async function onEnterPersonalData(data) {
+    function onEnterPersonalData(data) {
 
+        setShowPaymentOptions(true);
+
+        const order = {
+            ...data,
+            orderValue: Number(totalAmount)
+        }
+        setOrderData(order);
+    };
+
+    function onPayHandler() {
         const preparedItems = cartCtx.items.map((item) => {
             if(item.customization){
                 return {
@@ -33,15 +48,19 @@ const CartPage = () => {
             }
             
         });
-
+        
         const order = {
-            ...data,
-            // orderValue: Number(totalAmount),
+            ...orderData,
+            orderValue: Number(totalAmount),
             orderDetails: preparedItems
         }
+        setOrderData(order);
+
         onAddOrder(order);
-        // console.log(order);
-    };
+        setShowPaymentOptions(false);
+        setShowSuccess(true);
+        setOrderData(order);
+    }
 
     async function onAddOrder(order) {
         try {
@@ -67,22 +86,33 @@ const CartPage = () => {
     } 
 
     return <Fragment>
-        <div className={classes.container}>
-            <div className={classes.item_box}>
-                <table className={classes.items}>
-                    <tbody>
-                        <CartItems/>
-                    </tbody>
-                </table>
-            </div>
-            <div className={classes.total_box}>
-                <hr />
-                <h1>Suma zakupów</h1>
-                <h2>{totalAmount + " zł"}</h2>
-                <hr />
-                <PersonalDataForm onEnterPersonalData={onEnterPersonalData}/>
-            </div>
-        </div> 
+
+        { !showPaymentOptions && !showSuccess && (
+            <div className={classes.container}>
+                <div className={classes.item_box}>
+                    <table className={classes.items}>
+                        <tbody>
+                            <CartItems/>
+                        </tbody>
+                    </table>
+                </div>
+                <div className={classes.total_box}>
+                    <hr />
+                    <h1>Suma zakupów</h1>
+                    <h2>{totalAmount + " zł"}</h2>
+                    <hr />
+                    <PersonalDataForm onEnterPersonalData={onEnterPersonalData}/>
+                </div>
+            </div> 
+        )}
+        { showPaymentOptions && (
+            <Payment onPay={onPayHandler} orderData={orderData}/>
+        )}
+        { showSuccess && (
+            <p>
+                Zamówienie zostało zrealizowane.
+            </p>
+        )}
     </Fragment>
 };
 
