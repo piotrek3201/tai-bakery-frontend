@@ -34,11 +34,21 @@ const CartPage = () => {
 
     function onPayHandler() {
         const preparedItems = cartCtx.items.map((item) => {
+            
             if(item.customization){
                 return {
                     productId: item.id,
                     quantity: item.amount,
-                    customization: item.customization.slice('sizeId', 'glazeId', 'fillingId', 'cakeId', 'additionId', 'text')
+                    //customization: item.customization.slice('sizeId', 'glazeId', 'fillingId', 'cakeId', 'additionId', 'text')
+                    
+                    customization: {
+                        additionId: item.customization.additionId,
+                        cakeId: item.customization.cakeId,
+                        fillingId: item.customization.fillingId,
+                        glazeId: item.customization.glazeId,
+                        sizeId: item.customization.sizeId,
+                        text: item.customization.text
+                    }
                 }
             } else {
                 return {
@@ -55,6 +65,7 @@ const CartPage = () => {
             orderDetails: preparedItems
         }
         setOrderData(order);
+        console.log(order);
 
         onAddOrder(order);
         setShowPaymentOptions(false);

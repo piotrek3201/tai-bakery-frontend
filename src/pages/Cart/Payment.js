@@ -5,14 +5,16 @@ function Payment(props) {
 
   function paymentHandler() {
     //event.preventDefault();
-
+    
     props.onPay();
   }
-
+  console.log(props.orderData);
   return (
     <div>
       Do zapłaty: {props.orderData.orderValue} zł
-      <button type="button" onClick={paymentHandler}>Zapłać</button>
+      
+      <br />
+      Wybierz metodę płatności:
 
       <GooglePayButton
         environment='TEST'
@@ -36,7 +38,7 @@ function Payment(props) {
             }
           ],
           merchantInfo: {
-            merchantId: "1234567890",
+            merchantId: "1234567890123",
             merchantName: "Cukiernia Słodzianki"
           },
           transactionInfo: {
@@ -49,13 +51,17 @@ function Payment(props) {
           shippingAddressRequired: false,
           callbackIntents: ["PAYMENT_AUTHORIZATION"]
         }}
+        
         onLoadPaymentData={paymentRequest => {
           console.log(paymentRequest);
         }}
-        onPaymentAuthorized={(paymentData) => {
+        
+        onPaymentAuthorized={paymentData => {
           console.log(paymentData);
           paymentHandler();
+          return { transactionState: 'SUCCESS' };
         }}
+        
         existingPaymentMethodRequired='false'
         buttonColor="Black"
         buttonType="buy"

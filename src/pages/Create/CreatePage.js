@@ -26,7 +26,7 @@ const CreatePage = props => {
     const [filling, setFilling] = useState({});
     const [glaze, setGlaze] = useState({});
     const [addition, setAddition] = useState({});
-    const [text, setText] = useState(" ");
+    const [text, setText] = useState(" "); //Beata napraw to bo inaczej Marie codziennie przez wakacje
     let customCake = {};
 
     const link = `${API_URL}/products?categoryId=${categoryId}`;
@@ -43,6 +43,7 @@ const CreatePage = props => {
     }, [params]);
 
     const addItemToCartHandler = amount => {
+        console.log(text);
         cartCtx.addItem({
           id: customCake.productId,
           name: customCake.name,
@@ -57,7 +58,7 @@ const CreatePage = props => {
             fillingId: filling.id,
             cakeId: cake.id,
             additionId: addition.id,
-            text: text,
+            text: textInput.current.value,
             diameter: size.diameter,
             glazeName: glaze.name,
             fillingName: filling.name,
@@ -70,7 +71,7 @@ const CreatePage = props => {
     const submitHandler = event => {
         event.preventDefault();
 
-        setText(textInput.current.value);
+        //setText(textInput.current.value);
 
         // console.log(typeof products[0].productId + ", " + typeof customCakeId);
         for(let i = 0; i < products.length; i++){
@@ -95,7 +96,7 @@ const CreatePage = props => {
             fillingId: filling.id,
             cakeId: cake.id,
             additionId: addition.id,
-            text: text
+            text: textInput.current.value
           }});
       };
 
