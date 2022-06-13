@@ -119,3 +119,18 @@
     background-color: aqua;
 }
 
+.categoriesContainer {
+    margin-top: 40px;
+    background-color: transparent;
+    text-align: center;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.categoriesContainer img:hover{
+    transform: scale(1.1);
+}
+

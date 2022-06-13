@@ -51,7 +51,6 @@ const Slider = () => {
                 ))}
             </div>
         </div>
-        <p>COŚ TU KIEDYŚ BĘDZIE</p>
         
     </Fragment>
 };
