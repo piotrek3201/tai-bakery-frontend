@@ -25,7 +25,7 @@ const Orders = props => {
               {deliveryDate.toLocaleDateString()}
             </td>
             <td>
-              {order.orderValue} zł
+              {order.orderValue.toFixed(2)} zł
             </td>
             <td>
               {order.isFinished ? "TAK" : "NIE"}

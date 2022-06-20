@@ -110,7 +110,7 @@ const CartPage = () => {
                 <div className={classes.total_box}>
                     <hr />
                     <h1>Suma zakupów</h1>
-                    <h2>{totalAmount + " zł"}</h2>
+                    <h2>{totalAmount.toFixed(2) + " zł"}</h2>
                     <hr />
                     <PersonalDataForm onEnterPersonalData={onEnterPersonalData}/>
                 </div>

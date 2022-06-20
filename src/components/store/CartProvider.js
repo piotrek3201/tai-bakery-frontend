@@ -93,9 +93,12 @@ const cartReducer = (state, action) => {
 
         const existingCartItem = state.items[existingCartItemIndex];
 
-        const updatedTotalAmount = state.totalAmount - existingCartItem.price * existingCartItem.amount;
+        let updatedTotalAmount = state.totalAmount - existingCartItem.price * existingCartItem.amount;
 
         const updatedItems = state.items.filter(item => item.id !== action.id);
+
+        if(updatedItems.length === 0)
+            updatedTotalAmount = 0;
 
         return {
             items: updatedItems,
@@ -132,7 +135,7 @@ const cartReducer = (state, action) => {
             //updatedTotalAmount = state.totalAmount - existingCartItem.price * existingCartItem.amount;
             updatedTotalAmount = 0;
             updatedItems = state.items.filter(item => item.id !== action.id);
-        } 
+        }
         
         return {
             items: updatedItems,
