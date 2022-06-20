@@ -12,7 +12,7 @@ const Glazes = props => {
                 {glaze.glazeName} 
               </td>
               <td>
-                <div style={{backgroundColor: glaze.glazeColor}}>PLACEHOLDER</div>
+                <div style={{backgroundColor: glaze.glazeColor}}>{'\u00A0'}</div>
               </td>
               <td>
                 <button className={classes.button} onClick={() => props.onEditHandler(glaze)}>Edytuj</button>

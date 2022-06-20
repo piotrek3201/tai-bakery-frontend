@@ -56,7 +56,7 @@ const Card = props => {
         {props.isByWeight === true && <h3 className={classes.price}>{props.price  + " zł/kg"}</h3>}
         <form className={classes.container} onSubmit={submitHandler}>
           {props.isCustomizable !== true && <button className={classes.btn}>Dodaj do koszyka</button>}
-          {props.isCustomizable === true && <Link to={`/create/${props.id}/${props.categoryId}`} className={classes.btn_custom}>Customizuj</Link>}
+          {props.isCustomizable === true && <Link to={`/create/${props.id}/${props.categoryId}`} className={classes.btn_custom}>Dostosuj</Link>}
           {/* {props.isCustomizable === true && <button className={classes.btn}>Customizuj</button>} */}
           {props.isByWeight === true && props.isCustomizable !== true && <input onChange={changeHandler} className={classes.input} value={val} type='number' min="0.1" max="10" step="0.1"/>}
           {props.isByWeight !== true && props.isCustomizable !== true && <input onChange={changeHandler} className={classes.input} value={val} type='number' min="1" max="10" step="1"/>}

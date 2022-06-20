@@ -12,7 +12,7 @@ const Additions = props => {
                 {addition.additionName} 
               </td>
               <td>
-                {addition.additionVisual}
+                <img src={addition.additionVisual} alt={addition.additionName} />
               </td>
               <td>
                 <button className={classes.button} onClick={() => props.onEditHandler(addition)}>Edytuj</button>
