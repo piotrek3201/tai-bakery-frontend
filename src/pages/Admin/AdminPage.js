@@ -23,7 +23,6 @@ function AdminPage() {
       <AdminPanel>
         <Switch>
             <Route path={`${match.path}`} exact>
-              Panel
             </Route>
             <Route path={`${match.path}/categories`}>
               <ManageCategoriesPage />

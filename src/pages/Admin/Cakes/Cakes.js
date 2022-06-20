@@ -12,7 +12,7 @@ const Cakes = props => {
                 {cake.cakeName} 
               </td>
               <td>
-                <div style={{backgroundColor: cake.cakeColor}}>PLACEHOLDER</div>
+                <div style={{backgroundColor: cake.cakeColor}}>{'\u00A0'}</div>
               </td>
               <td>
                 <button className={classes.button} onClick={() => props.onEditHandler(cake)}>Edytuj</button>

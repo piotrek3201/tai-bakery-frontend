@@ -12,7 +12,7 @@ const Fillings = props => {
                 {filling.fillingName} 
               </td>
               <td>
-                <div style={{backgroundColor: filling.fillingColor}}>PLACEHOLDER</div>
+                <div style={{backgroundColor: filling.fillingColor}}>{'\u00A0'}</div>
               </td>
               <td>
                 <button className={classes.button} onClick={() => props.onEditHandler(filling)}>Edytuj</button>

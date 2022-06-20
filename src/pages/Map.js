@@ -47,9 +47,18 @@ export default function BakeryMap() {
     return isLoaded ? <Fragment>
         <h1 className={classes.title}>Lokalizacja</h1>
         <h2 className={classes.title}>Cukiernia "Słodzianki"</h2>
-        <p className={classes.description}>ul. gen. Sylwestra Kaliskiego 2<br />00-908 Warszawa</p>
+        <p className={classes.description}>
+            ul. gen. Sylwestra Kaliskiego 2<br />
+            00-908 Warszawa<br />
+            tel. (+48) 261 839 083
+        </p>
+        <p className={classes.description}>
+            Godziny otwarcia: <br />
+            poniedziałek-piątek: 7-21 <br/>
+            sobota-niedziela i święta: 8-20 <br />
+        </p>
         <div className={classes.map}>
-            <GoogleMap center={center} zoom={zoom} mapContainerStyle={containerStyle} onLoad={onLoad}>
+            <GoogleMap center={center} zoom={100} mapContainerStyle={containerStyle} onLoad={onLoad}>
                 <Marker position={center}/>
             </GoogleMap>
         </div>

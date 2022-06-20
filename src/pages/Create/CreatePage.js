@@ -26,7 +26,7 @@ const CreatePage = props => {
     const [filling, setFilling] = useState({});
     const [glaze, setGlaze] = useState({});
     const [addition, setAddition] = useState({});
-    const [text, setText] = useState(" "); //Beata napraw to bo inaczej Marie codziennie przez wakacje
+    const [text, setText] = useState(""); //Beata napraw to bo inaczej Marie codziennie przez wakacje
     let customCake = {};
 
     const link = `${API_URL}/products?categoryId=${categoryId}`;
@@ -215,7 +215,7 @@ const CreatePage = props => {
             <AdditionList items={additions[0]} onChangeHandler={getAdditions}/>
             <h2>Napis</h2>
             <div className={classes.text}>
-                <textarea type='text' id='text' ref={textInput} placeholder="Wpisz własny tekst..."> </textarea>
+                <textarea type='text' id='text' ref={textInput} placeholder="Wpisz własny tekst..." />
             </div>
             <form className={classes.container} onSubmit={submitHandler}>
                 <button className={classes.button}>Dodaj do koszyka</button>

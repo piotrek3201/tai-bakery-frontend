@@ -84,6 +84,13 @@ const PersonalDataForm = props => {
             enteredPostcode = postcodeInput.current.value;
         }
 
+        const today = new Date();
+        const deliveryDate = Date.parse(enteredDate);
+        if (deliveryDate <= today) {
+            alert("Niestety nasi dostawcy nie posiadają wehikułu czasu. Proszę wpisać przyszłą datę.");
+            return;
+        }
+
         props.onEnterPersonalData({
             customerEmail: enteredEmail,
             customerName: enteredName + " " + enteredLastName,

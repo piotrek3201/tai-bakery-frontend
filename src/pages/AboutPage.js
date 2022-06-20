@@ -15,6 +15,7 @@ function AboutPage(){
         </div>
         <img src="https://nationaltoday.com/wp-content/uploads/2019/10/national-cake-decorating-day.jpg"></img>
       </div>
+      
     </div>
     
   );
