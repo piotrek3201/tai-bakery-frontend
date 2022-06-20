@@ -10,6 +10,7 @@
 
 .product_image{
     height: 150px;
+    min-width: 150px;
     background-size: cover !important; 
     background-repeat: no-repeat !important;
     background-position: center center !important;
@@ -17,7 +18,7 @@
 
 .items{
     border-collapse: collapse;
-    table-layout: fixed; 
+    table-layout: auto; 
     width: 100%;
     font-family: Lato, sans-serif;
     border-spacing: 50px 0;

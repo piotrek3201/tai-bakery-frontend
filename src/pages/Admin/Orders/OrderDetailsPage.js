@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useParams } from "react-router-dom";
+import classes from "./Orders.module.css";
 
 import API_URL from '../../../utilities/Constants';
 
@@ -66,7 +67,7 @@ function OrderDetailsPage() {
   }
 
   return (
-    <div>
+    <div className={classes.orderContainer}>
       <p>Zamówienie nr: {loadedOrder.orderId}</p>
       <p>
         Klient: {loadedOrder.customerName}<br/>
@@ -78,7 +79,7 @@ function OrderDetailsPage() {
         Status zamówienia: {loadedOrder.isFinished ? "Ukończone" : "W przygotowaniu"}
       </p>
 
-      Szczegóły zamówienia
+      <p>Szczegóły zamówienia</p>
       <table>
         <thead>
           <tr>
@@ -94,7 +95,7 @@ function OrderDetailsPage() {
         </tbody>
       </table>
 
-      Wartość zamówienia: {loadedOrder.orderValue} zł
+      <p>Wartość zamówienia: {loadedOrder.orderValue} zł</p>
     </div>
     
   );

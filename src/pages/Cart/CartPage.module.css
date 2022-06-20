@@ -195,3 +195,26 @@
     }
 
 }
+
+.payment{
+    background-color: white;
+    margin: 0 auto;
+    width: 35%;
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: Lato, sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
+}
+
+.payment .price{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.payment p{
+    font-size: 20px;
+    margin: 15px 0;
+}

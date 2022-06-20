@@ -10,7 +10,7 @@
 
 .items{
     border-collapse: collapse;
-    table-layout: fixed; 
+    table-layout: auto;  
     width: 100%;
     font-family: Lato, sans-serif;
     border-spacing: 50px 0;

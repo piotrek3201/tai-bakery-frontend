@@ -1,5 +1,6 @@
 import React from "react";
 import GooglePayButton from '@google-pay/button-react';
+import classes from './CartPage.module.css';
 
 function Payment(props) {
 
@@ -10,12 +11,10 @@ function Payment(props) {
   }
   console.log(props.orderData);
   return (
-    <div>
-      Do zapłaty: {props.orderData.orderValue} zł
-      
-      <br />
-      Wybierz metodę płatności:
-
+    <div className={classes.payment}>
+      <p>Do zapłaty:</p>
+      <p className={classes.price}>{props.orderData.orderValue} zł</p>
+      <p>Wybierz metodę płatności:</p>
       <GooglePayButton
         environment='TEST'
         paymentRequest={{

@@ -120,9 +120,11 @@ const CartPage = () => {
             <Payment onPay={onPayHandler} orderData={orderData}/>
         )}
         { showSuccess && (
-            <p>
-                Zamówienie zostało zrealizowane.
-            </p>
+            <div className={classes.payment}>
+                <p>
+                    Zamówienie zostało zrealizowane.
+                </p>
+            </div>
         )}
     </Fragment>
 };
