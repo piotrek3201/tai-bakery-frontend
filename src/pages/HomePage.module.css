@@ -134,3 +134,43 @@
     transform: scale(1.1);
 }
 
+.quote {
+    text-align: center;
+    font-family: Lato, sans-serif;
+    font-style: italic;
+    font-size: 24px;
+    color: rgb(187, 127, 172);
+}
+
+.aboutUs, .aboutCustomCakes {
+    width: 80%;
+    margin: 30px auto 0 auto;
+    display: flex;
+    background-color: white;
+    box-shadow: 8px 8px 11px -6px rgba(165, 165, 165, 1);
+}
+
+.aboutUs img, .aboutCustomCakes img{
+    max-width: 600px;
+    box-shadow: 8px 8px 11px -6px rgba(165, 165, 165, 1);
+}
+
+.aboutUs .shortDescription, .aboutCustomCakes .createCakeDescritpion{
+    text-align: justify;
+    font-family: Lato, sans-serif;
+    margin: 0px 15px;
+}
+
+@media (max-width: 1300px){
+
+    .aboutUs, .aboutCustomCakes {
+        display: grid;
+    }
+
+    .aboutUs img, .aboutCustomCakes img{
+        width: 100%;
+        margin: 0 auto;
+    }
+
+}
+
