@@ -31,8 +31,8 @@ function AddFillingForm(props) {
           <input className={classes.input} type='text' id='additionName' ref={additionNameInput} placeholder="Wpisz nazwę dodatku..."/>
         </div>
         <div className={classes.additionName}>
-          <label htmlFor='additionVisual'>Forma (do ustalenia)</label>
-          <input className={classes.input} type='text' id='additionVisual' ref={additionVisualInput} placeholder="???"/>
+          <label htmlFor='additionVisual'>Ścieżka do zdjęcia</label>
+          <input className={classes.input} type='text' id='additionVisual' ref={additionVisualInput} placeholder="/img/cakeAdditions/addition.png"/>
         </div>
         <div className={classes.btn_container}>
           <button className={classes.button} type='submit'>Zapisz</button>

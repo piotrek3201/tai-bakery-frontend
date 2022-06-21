@@ -57,7 +57,7 @@ function OrderDetailsPage() {
         <td>{i}</td>
         <td>{detail.product.name}</td>
         <td>{detail.quantity}</td>
-        <td>{detail.price} zł</td>
+        <td>{detail.price.toFixed(2)} zł</td>
         <td>
           {customization}
         </td>
@@ -94,7 +94,7 @@ function OrderDetailsPage() {
         </tbody>
       </table>
 
-      <p>Wartość zamówienia: {loadedOrder.orderValue} zł</p>
+      <p>Wartość zamówienia: {loadedOrder.orderValue.toFixed(2)} zł</p>
     </div>
     
   );

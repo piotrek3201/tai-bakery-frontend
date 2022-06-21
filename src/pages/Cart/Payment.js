@@ -10,7 +10,7 @@ function Payment(props) {
   return (
     <div className={classes.payment}>
       <p>Do zapłaty:</p>
-      <p className={classes.price}>{props.orderData.orderValue} zł</p>
+      <p className={classes.price}>{props.orderData.orderValue.toFixed(2)} zł</p>
       <p>Wybierz metodę płatności:</p>
       <GooglePayButton
         environment='TEST'
