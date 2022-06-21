@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
-import BakeryMap from './Map';
 import classes from './ContactPage.module.css';
+import BakeryMap from '../components/Map';
 
 export default function ContactPage() {
     

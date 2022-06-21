@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import { useJsApiLoader, GoogleMap, Marker } from '@react-google-maps/api';
-import classes from './ContactPage.module.css';
+import classes from '../pages/ContactPage.module.css';
 
 export default function BakeryMap() {
 

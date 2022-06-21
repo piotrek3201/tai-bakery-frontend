@@ -94,7 +94,7 @@ function OrderDetailsPage() {
         </tbody>
       </table>
 
-      <p>Wartość zamówienia: {loadedOrder.orderValue.toFixed(2)} zł</p>
+      {loadedOrder.orderValue && <p>Wartość zamówienia: {loadedOrder.orderValue.toFixed(2)} zł</p>}
     </div>
     
   );
