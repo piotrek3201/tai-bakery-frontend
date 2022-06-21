@@ -32,7 +32,7 @@ function EditAdditionForm(props) {
           <input type='text' id='additionName' ref={additionNameInput} defaultValue={props.addition.additionName}/>
         </div>
         <div className={classes.additionName}>
-          <label htmlFor='additionVisual'>Forma (do ustalenia)</label>
+          <label htmlFor='additionVisual'>Ścieżka do zdjęcia</label>
           <input className={classes.input} type='text' id='additionVisual' ref={additionVisualInput} defaultValue={props.addition.additionVisual}/>
         </div>
         <div className={classes.btn_container}>
