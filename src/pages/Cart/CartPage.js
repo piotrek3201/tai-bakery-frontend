@@ -39,7 +39,6 @@ const CartPage = () => {
                 return {
                     productId: item.id,
                     quantity: item.amount,
-                    //customization: item.customization.slice('sizeId', 'glazeId', 'fillingId', 'cakeId', 'additionId', 'text')
                     
                     customization: {
                         additionId: item.customization.additionId,
@@ -65,8 +64,6 @@ const CartPage = () => {
             orderDetails: preparedItems
         }
         setOrderData(order);
-        console.log(order);
-
         onAddOrder(order);
         setShowPaymentOptions(false);
         setShowSuccess(true);
@@ -83,7 +80,6 @@ const CartPage = () => {
       }
 
     async function addOrderHandler(order) {
-        console.log(order);
         const response = await fetch(`${API_URL}/orders/add`, {
           method: 'POST',
           body: JSON.stringify(order),
@@ -110,7 +106,7 @@ const CartPage = () => {
                 <div className={classes.total_box}>
                     <hr />
                     <h1>Suma zakupów</h1>
-                    <h2>{totalAmount.toFixed(2) + " zł"}</h2>
+                    <h2>{totalAmount + " zł"}</h2>
                     <hr />
                     <PersonalDataForm onEnterPersonalData={onEnterPersonalData}/>
                 </div>

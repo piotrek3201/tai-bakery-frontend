@@ -1,6 +1,4 @@
-import classes from './CreatePage.module.css';
-import { useState, useRef } from 'react';
-import { v4 as uuidv4 } from "uuid";
+import { useRef } from 'react';
 
 const AdditionList = props => {
     let additions;
@@ -11,7 +9,6 @@ const AdditionList = props => {
         event.preventDefault();
         const enteredAdditionId = additionInput.current.value;
         props.onChangeHandler(enteredAdditionId);
-        // console.log(enteredAdditionId);
     };
 
     if(props.items) {

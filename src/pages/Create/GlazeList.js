@@ -1,6 +1,4 @@
-import classes from './CreatePage.module.css';
-import { v4 as uuidv4 } from "uuid";
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 
 const GlazeList = props => {
     let glazes;
@@ -11,7 +9,6 @@ const GlazeList = props => {
         event.preventDefault();
         const enteredGlazeId = glazeInput.current.value;
         props.onChangeHandler(enteredGlazeId);
-        // console.log(enteredglazesId);
     };
 
     if(props.items) {

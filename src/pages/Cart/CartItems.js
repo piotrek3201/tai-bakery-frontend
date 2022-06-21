@@ -7,8 +7,6 @@ const CartItems = () => {
 
     const cartCtx = useContext(CartContext);
 
-    // const totalAmount = cartCtx.totalAmount.toFixed(2);
-
     const cartItemRemoveWholeHandler = id => {
         cartCtx.removeWholeItem(id);
     }

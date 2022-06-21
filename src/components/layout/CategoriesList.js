@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect, useCallback } from "react";
+import { Fragment} from "react";
 import Category from "./Category";
 import classes from './MainNavigation.module.css';
 

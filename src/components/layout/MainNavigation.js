@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
-import { Fragment, useCallback, useContext, useEffect, useState } from "react";
+import { Fragment, useContext} from "react";
 import logo from './logo/logo.png';
 import cart from './logo/shopping-cart.png';
 import classes from './MainNavigation.module.css';
 import CategoriesList from "./CategoriesList";
 import ShoppingCart from "./ShoppingCart";
 import CartContext from '../store/cart-context';
-import API_URL from "../../utilities/Constants";
 
 function MainNavigation(props) {
   const cartCtx = useContext(CartContext);
@@ -27,7 +26,7 @@ function MainNavigation(props) {
             <li className={classes.list_item}><Link to='/contact'>Kontakt</Link></li>
             <li className={classes.list_item}>
               <Link to='/cart' className={classes.cart_btn}>Koszyk</Link>
-              <img className={classes.cart_logo} src={cart}/>
+              <img className={classes.cart_logo} alt="" src={cart}/>
               {count !== 0 && <div className={classes.count}>{count}</div>}
               <ShoppingCart />
             </li>

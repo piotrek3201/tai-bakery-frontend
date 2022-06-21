@@ -14,19 +14,6 @@
   padding-bottom: 0;
 }
 
-/* TO DO! */
-/* @media (max-width: 450px){
-
-  .card{
-    max-width: 100vh !important;
-  }
-
-  .card_img{
-    width: 100% !important;
-  }
-
-} */
-
 .card_img{
   height: 300px;
   width: 360px;

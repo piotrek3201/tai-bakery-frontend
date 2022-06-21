@@ -1,4 +1,4 @@
-import { useRef, Fragment } from "react";
+import { useRef } from "react";
 import classes from './CategoryForm.module.css';
 
 function AddCategoryForm(props) {

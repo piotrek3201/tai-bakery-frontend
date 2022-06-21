@@ -1,5 +1,5 @@
 import classes from './CreatePage.module.css';
-import { Fragment, useState, useEffect, useCallback, useContext, useRef } from "react";
+import { useState, useEffect, useCallback, useContext, useRef } from "react";
 import AdditionList from './AdditionList';
 import CakeList from './CakeList';
 import FillingList from './FillingList';
@@ -8,7 +8,6 @@ import SizeList from './SizeList';
 import API_URL from '../../utilities/Constants';
 import CartContext from '../../components/store/cart-context';
 import { useParams } from "react-router-dom";
-import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 const CreatePage = props => {
@@ -26,7 +25,6 @@ const CreatePage = props => {
     const [filling, setFilling] = useState({});
     const [glaze, setGlaze] = useState({});
     const [addition, setAddition] = useState({});
-    const [text, setText] = useState(""); //Beata napraw to bo inaczej Marie codziennie przez wakacje
     let customCake = {};
 
     const link = `${API_URL}/products?categoryId=${categoryId}`;
@@ -40,10 +38,9 @@ const CreatePage = props => {
         }
 
         fetchProducts_();
-    }, [params]);
+    }, [params, link]);
 
     const addItemToCartHandler = amount => {
-        console.log(text);
         cartCtx.addItem({
           id: customCake.productId,
           name: customCake.name,
@@ -70,10 +67,6 @@ const CreatePage = props => {
     
     const submitHandler = event => {
         event.preventDefault();
-
-        //setText(textInput.current.value);
-
-        // console.log(typeof products[0].productId + ", " + typeof customCakeId);
         for(let i = 0; i < products.length; i++){
             if(products[i].productId === customCakeId){
                 customCake = products[i];
@@ -85,19 +78,6 @@ const CreatePage = props => {
         } else {
             alert("Nie można dodać do koszyka. Należy wybrać wszystkie opcje.");
         }
-            
-        console.log(customCakeId);
-        console.log(categoryId);
-        console.log({
-            ...customCake, 
-            customization: {
-            sizeId: size.id,
-            glazeId: glaze.id,
-            fillingId: filling.id,
-            cakeId: cake.id,
-            additionId: addition.id,
-            text: textInput.current.value
-          }});
       };
 
     const [additions, setAdditions] = useState([]);
@@ -111,15 +91,12 @@ const CreatePage = props => {
             for (let i = 0; i < links.length; i++){
                 response = await fetch(API_URL + '/customization/' + links[i] + '/all');
                 responseJson = await response.json();
-                // console.log(responseJson); 
                 responseData.push(responseJson);
             }
             
-            console.log(responseData);
-            // console.log(Additions[1]);
             setAdditions(responseData);
         } catch (error) {
-            console.log(error.message);
+            alert(error.message);
         }
     }, []);
 

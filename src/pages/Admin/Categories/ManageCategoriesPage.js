@@ -14,7 +14,6 @@ function ManageCategoriesPage() {
   const [currentCategory, setCurrentCategory] = useState(null);
 
   const fetchCategoriesHandler = useCallback(async () => {
-    console.log("Zasysamy");
     try {
       const response = await fetch(`${API_URL}/categories/all`);
       
@@ -23,7 +22,6 @@ function ManageCategoriesPage() {
       }
 
       const responseData = await response.json();
-      console.log(responseData);
       setLoadedCategories(responseData);
     } catch (error) {
       alert(error.message);
@@ -86,8 +84,6 @@ function ManageCategoriesPage() {
     if (!response.ok) {
       throw new Error('Nie udało się dodać kategorii.');
     }
-
-    console.log("dodano");
   }
 
   async function editCategoryHandler(category) {

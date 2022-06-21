@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ProductsList from "../components/UI/ProductsList";
 import { useParams } from "react-router-dom";
 import API_URL from "../utilities/Constants";
@@ -6,7 +6,6 @@ import API_URL from "../utilities/Constants";
 const ProductsPage = props => {
 
     const params = useParams();
-    // console.log(params.categoryName);
     let id;
     if(!params.categoryId){
         id = 0;
@@ -38,12 +37,11 @@ const ProductsPage = props => {
             }
             else 
                 setName("Brak produktów");
-            // console.log(responseData);
             setProducts(responseData);
         }
 
         fetchProducts_();
-    }, [params, name]);
+    }, [params, name, id, link]);
 
     return <ProductsList products={products} categoryId={id} categoryName={name}/>
 };

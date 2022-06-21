@@ -49,11 +49,6 @@
     border: 3px solid rgb(139, 27, 83);
 }
 
-
-/* .container select option:after{
-    background-color: rgb(139, 27, 83);
-} */
-
 .container input[type=text], .container textarea{
     margin: 30px auto 20px auto;
     min-width: 380px;

@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer} from "react";
 import CartContext from "./cart-context";
 
 const defaultCartState = {
@@ -7,13 +7,6 @@ const defaultCartState = {
 };
 
 const cartReducer = (state, action) => {
-
-    // useEffect(() => {
-    //     const items = JSON.parse(localStorage.getItem('items'));
-    //     if(items){
-    //         setitems(items);
-    //     }
-    // }, []);
 
     if(action.type === 'ADD'){
         
@@ -119,8 +112,6 @@ const cartReducer = (state, action) => {
 
         let updatedItems;
 
-        // console.log(existingCartItem.amount.toFixed(1));
-
         if(existingCartItem.isByWeight === true && existingCartItem.amount.toFixed(2) !== '0.10'){
             const updatedItem = {...existingCartItem, amount: existingCartItem.amount - 0.1};
             updatedTotalAmount = state.totalAmount - existingCartItem.price * 0.1;
@@ -132,7 +123,6 @@ const cartReducer = (state, action) => {
             updatedItems = [...state.items];
             updatedItems[existingCartItemIndex] = updatedItem;
         } else {
-            //updatedTotalAmount = state.totalAmount - existingCartItem.price * existingCartItem.amount;
             updatedTotalAmount = 0;
             updatedItems = state.items.filter(item => item.id !== action.id);
         }
@@ -151,12 +141,10 @@ const CardProvider = props => {
     const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
 
     useEffect(() => {
-        console.log(cartState.items);
         localStorage.setItem('items', JSON.stringify(cartState.items));
     }, [cartState.items]);
 
     useEffect(() => {
-        console.log(cartState.totalAmount);
         localStorage.setItem('totalAmount', JSON.stringify(cartState.totalAmount));
     }, [cartState.totalAmount]);
 

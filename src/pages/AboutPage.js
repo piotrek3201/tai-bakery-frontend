@@ -1,8 +1,6 @@
-import { useParams } from "react-router-dom";
 import classes from "./AboutPage.module.css";
 
 function AboutPage(){
-  const params = useParams();
   return (
     <div className={classes.containerAbout}>
       <div className={classes.photoContainer}>
@@ -21,7 +19,7 @@ function AboutPage(){
             Dostawa jest możliwa w każdy dzień tygodnia i jest bezpłatna dla wszystkich zamówień.
           </p>
         </div>
-        <img src="https://nationaltoday.com/wp-content/uploads/2019/10/national-cake-decorating-day.jpg"></img>
+        <img src="https://nationaltoday.com/wp-content/uploads/2019/10/national-cake-decorating-day.jpg" alt=""></img>
       </div>
       
     </div>

@@ -7,7 +7,6 @@ import classes from './ManageOrdersPage.module.css';
 
 function ManageOrdersPage() {
   const [loadedOrders, setLoadedOrders] = useState([]);
-  const [currentOrder, setCurrentOrder] = useState(null);
 
   const fetchOrdersHandler = useCallback(async () => {
     try {

@@ -1,6 +1,4 @@
-import classes from './CreatePage.module.css';
-import { v4 as uuidv4 } from "uuid";
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 
 const CakeList = props => {
     let cakes;
@@ -11,7 +9,6 @@ const CakeList = props => {
         event.preventDefault();
         const enteredCakeId = cakeInput.current.value;
         props.onChangeHandler(enteredCakeId);
-        // console.log(enteredCakeId);
     };
 
 

@@ -25,7 +25,7 @@ function OrderDetailsPage() {
     } catch (error) {
       alert(error.message);
     }
-  }, []);
+  }, [orderId]);
 
   useEffect(() => {
     fetchOrderHandler();
@@ -33,7 +33,6 @@ function OrderDetailsPage() {
 
   const date = new Date(loadedOrder.date);
   const deliveryDate = new Date(loadedOrder.deliveryDate);
-  console.log(loadedOrder);
 
   let orderDetails;
   let i = 0;

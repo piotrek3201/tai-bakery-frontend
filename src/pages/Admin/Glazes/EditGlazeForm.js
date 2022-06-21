@@ -1,4 +1,4 @@
-import { useRef, Fragment } from "react";
+import { useRef} from "react";
 import classes from './GlazeForm.module.css';
 
 function EditGlazeForm(props) {

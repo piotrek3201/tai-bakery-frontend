@@ -1,7 +1,6 @@
 import React, {Fragment, useContext, useRef, useState, useLayoutEffect} from 'react';
 import classes from './MainNavigation.module.css';
 import CartContext from '../store/cart-context';
-import { Route, Switch, Redirect } from 'react-router-dom';
 import { v4 as uuidv4 } from "uuid";
 import { Link } from 'react-router-dom';
 
@@ -23,9 +22,6 @@ const ShoppingCart = () => {
         cartCtx.addOneItem(item);
     }
 
-    // <li>{item.name + " " + item.amount}</li>
-    // var width = document.getElementById('cart').offsetWidth;
-
     const cart_items = cartCtx.items.map((item) => {
 
         const price = item.amount * item.price;
@@ -33,7 +29,7 @@ const ShoppingCart = () => {
         if(item.isByWeight === false){
             return <div key={uuidv4()} className={classes.cart_items_container}>
                 <div className={classes.image_box}>
-                    <img src={item.url}></img>
+                    <img src={item.url} alt=""></img>
                 </div>
                 <div className={classes.about}>
                     {Boolean(item.isCustomizable) === true &&<h1 style={{marginBottom: 0} }>{item.name}</h1>}
@@ -53,7 +49,7 @@ const ShoppingCart = () => {
         } else {
             return <div key={uuidv4()} className={classes.cart_items_container}>
             <div className={classes.image_box}>
-                <img src={item.url}></img>
+                <img src={item.url} alt=""></img>
             </div>
             <div className={classes.about}>
                 <h1>{item.name}</h1>
@@ -76,7 +72,6 @@ const ShoppingCart = () => {
 
     useLayoutEffect(() => {
         setWidth(myCart.current.offsetWidth);
-        console.log(myCart.current.offsetWidth);
     }, []);
 
     return <Fragment>

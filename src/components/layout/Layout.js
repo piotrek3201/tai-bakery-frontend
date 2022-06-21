@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import MainNavigation from './MainNavigation';
 import CardProvider from '../store/CartProvider';
 import classes from './Layout.module.css';

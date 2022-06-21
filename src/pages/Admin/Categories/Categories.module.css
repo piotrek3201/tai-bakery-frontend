@@ -1,9 +1,7 @@
 .container{
     margin: 30px auto 0px auto;
-    /* display: flex; */
     background-color: white;
     border-radius: 10px;
-    /* justify-content: center; */
     width: 90%;
     box-shadow: 3px 5px 24px -6px rgba(146, 146, 146, 1);
 }

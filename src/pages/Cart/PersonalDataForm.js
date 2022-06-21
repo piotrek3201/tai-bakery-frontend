@@ -19,10 +19,6 @@ const PersonalDataForm = props => {
     const [enteredDate, setDate] = useState("");
 
     const changeDeliveryHandler = () => {
-        console.log("selfInput: " + selfPickUpInput.current.checked);
-        console.log("deliveryInput: " + deliveryInput.current.checked);
-        console.log("enteredSelf: " + enteredSelfPickUp);
-        console.log("enteredDelivery: " + enteredDelivery);
 
         if(enteredDelivery === true && selfPickUpInput.current.checked === true){
             setSelfPickUp(selfPickUpInput.current.checked);
@@ -39,23 +35,16 @@ const PersonalDataForm = props => {
         if(enteredSelfPickUp === true && selfPickUpInput.current.checked === false && deliveryInput.current.checked === false && enteredDelivery === false){
             selfPickUpInput.current.checked = false;
             setSelfPickUp(false);
-            console.log("selfPickUp - false");
             deliveryInput.current.checked = true;
             setDelivery(true);
-            console.log("delivery - true");
         }
 
         if(enteredSelfPickUp === false && selfPickUpInput.current.checked === false && deliveryInput.current.checked === false && enteredDelivery === true){
             selfPickUpInput.current.checked = true;
             setSelfPickUp(true);
-            console.log("selfPickUp - false");
             deliveryInput.current.checked = false;
             setDelivery(false);
-            console.log("delivery - true");
         }
-
-        // setDelivery(deliveryInput.current.checked);
-        // setSelfPickUp(selfPickUpInput.current.checked);
     }
 
     const submitHandler = (event) => {
@@ -94,7 +83,6 @@ const PersonalDataForm = props => {
         props.onEnterPersonalData({
             customerEmail: enteredEmail,
             customerName: enteredName + " " + enteredLastName,
-            // customerLastName: enteredLastName,
             customerPhone: enteredPhone,
             customerAddress: enteredAddress,
             customerCity: enteredCity,

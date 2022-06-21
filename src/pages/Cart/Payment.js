@@ -5,11 +5,8 @@ import classes from './CartPage.module.css';
 function Payment(props) {
 
   function paymentHandler() {
-    //event.preventDefault();
-    
     props.onPay();
   }
-  console.log(props.orderData);
   return (
     <div className={classes.payment}>
       <p>Do zapłaty:</p>
@@ -50,13 +47,8 @@ function Payment(props) {
           shippingAddressRequired: false,
           callbackIntents: ["PAYMENT_AUTHORIZATION"]
         }}
-        
-        onLoadPaymentData={paymentRequest => {
-          console.log(paymentRequest);
-        }}
-        
+
         onPaymentAuthorized={paymentData => {
-          console.log(paymentData);
           paymentHandler();
           return { transactionState: 'SUCCESS' };
         }}

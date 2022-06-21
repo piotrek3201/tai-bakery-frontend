@@ -1,4 +1,4 @@
-import { useRef, Fragment, useState, useCallback, useEffect } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import API_URL from '../../../utilities/Constants';
 import classes from './ProductForm.module.css';
 
@@ -17,7 +17,7 @@ function AddProductForm(props) {
 
       setLoadedCategories(responseData);
     } catch (error) {
-      console.log(error.message);
+      alert(error.message);
     }
   }, []);
 
@@ -55,7 +55,6 @@ function AddProductForm(props) {
 
     if(enteredUrl === ""){
       enteredUrl = "url";
-      console.log(enteredUrl);
     }
 
     props.onAddProduct({
