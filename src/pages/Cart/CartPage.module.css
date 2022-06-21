@@ -89,7 +89,6 @@
 }
 
 .input input[type=text], .input input[type=email], .input input[type=phone], .input input[type=datetime-local]{
-    /* margin: 30px auto 20px auto; */
     float: left;
     width: 80%;
     padding: 15px;
