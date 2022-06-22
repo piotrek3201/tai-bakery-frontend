@@ -33,7 +33,6 @@ const CreatePage = props => {
         const fetchProducts_ = async () => {
             const response_ = await fetch(link);
             const responseData = await response_.json();
-            // console.log(responseData);
             setProducts(responseData);
         }
 
