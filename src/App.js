@@ -32,9 +32,14 @@ function App() {
   const [isLogged, setIsLogged] = useState(false);
 
   const fetchUserHandler = useCallback(async () => {
+      const jwtToken = localStorage.getItem("jwt");
+
       const response = await fetch(`${API_URL}/auth/user`, {
-        headers: {'Content-Type': 'application/json'},
-        credentials: 'include'
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${jwtToken}`
+      },
+        //credentials: 'include'
       });
 
       const responseData = await response.json();

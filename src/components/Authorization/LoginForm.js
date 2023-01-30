@@ -27,11 +27,18 @@ function LoginForm() {
         headers: {
           'Content-Type': 'application/json'
         },
-        credentials: 'include'
+        //credentials: 'include'
       });
       if (!response.ok) {
         throw new Error('Błędne dane logowania.');
       }
+
+      const responseData = await response.json();
+      
+      const jwtToken = responseData.token;
+
+      localStorage.setItem("jwt", jwtToken);
+
       history.replace('/');
       window.location.reload();
     } catch (ex) {

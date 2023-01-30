@@ -9,12 +9,13 @@ function LogoutPage() {
       await fetch(`${API_URL}/auth/logout`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        credentials: 'include'
+        //credentials: 'include'
       });
 
     } catch (error) {
       alert(error.message);
     }
+    localStorage.removeItem("jwt");
 
     window.location.reload();
   }, []);
